@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XCare H5 Pro - Smart Elder Care Solution</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .text-primary { color: #27296A; }
+        .text-secondary { color: #BD9B2F; }
+        .bg-primary { background-color: #27296A; }
+        .bg-secondary { background-color: #BD9B2F; }
+        .border-primary { border-color: #27296A; }
+        .border-secondary { border-color: #BD9B2F; }
+
+        .hero-section {
+            background: linear-gradient(rgba(39, 41, 106, 0.8), rgba(39, 41, 106, 0.8)), url('usecase1.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .section-title {
+            font-weight: 900;
+            font-size: 2.25rem;
+            line-height: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #27296A;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 3rem auto;
+            color: #6c757d;
+            font-size: 1.125rem;
+        }
+
+        .feature-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(39, 41, 106, 0.1), 0 10px 10px -5px rgba(39, 41, 106, 0.04);
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 400px;
+            width: 100%;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: #ffffff !important;
+                -webkit-print-color-adjust: exact;
+            }
+            .no-print { display: none; }
+            .print-section {
+                padding-top: 1.5rem;
+                padding-bottom: 1.5rem;
+                page-break-inside: avoid;
+            }
+            .hero-section {
+                background: none !important;
+                padding-top: 2rem !important;
+                padding-bottom: 2rem !important;
+            }
+            .hero-section h1, .hero-section p {
+                color: #27296A !important;
+            }
+             .section-title, .section-subtitle, .text-primary {
+                color: #27296A !important;
+            }
+            .feature-card {
+                box-shadow: none !important;
+                border: 1px solid #e5e7eb;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Container -->
+    <div class="max-w-6xl mx-auto bg-white shadow-xl">
+
+        <!-- Header / Hero Section -->
+        <header class="hero-section text-white text-center py-20 px-6 print-section">
+            <h1 class="text-4xl md:text-6xl font-black tracking-tight">XCare H5 Pro</h1>
+            <p class="mt-4 text-xl md:text-2xl font-light">The Future of Smart Elder Care</p>
+            <p class="mt-2 text-lg md:text-xl font-light max-w-3xl mx-auto">Guarding lives with technology. A precise, dignified care solution for professional nursing facilities and home care.</p>
+        </header>
+
+        <main class="p-6 md:p-12">
+
+            <!-- The Challenge Section -->
+            <section class="my-16 print-section">
+                <h2 class="section-title">The Unseen Challenge of Modern Elder Care</h2>
+                <p class="section-subtitle">Whether in professional care facilities or at home, the pressure is on to provide efficient, continuous monitoring for the health and safety of our elders.</p>
+                <div class="grid md:grid-cols-2 gap-8 text-center">
+                    <div class="bg-gray-50 p-8 rounded-lg">
+                        <h3 class="text-2xl font-bold text-primary mb-3">For Nursing Homes: Efficiency & Staffing Bottlenecks</h3>
+                        <p class="text-gray-600">Caregivers are stretched thin, managing multiple residents at once, making 24/7 observation nearly impossible. Nightly rounds can disturb sleep, and delayed responses to emergencies like falls or vital sign changes can have serious consequences.</p>
+                    </div>
+                    <div class="bg-gray-50 p-8 rounded-lg">
+                        <h3 class="text-2xl font-bold text-primary mb-3">For Home Care: The Anxiety of Distance</h3>
+                        <p class="text-gray-600">The "9073" care model shows that the vast majority of seniors prefer to age in place. For family members juggling work and life, this creates constant worry about the safety of loved ones living alone. They need a solution that respects independence while providing real-time peace of mind.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- The Solution Section -->
+            <section class="my-16 print-section">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-primary">The Solution: XCare H5 Pro, The Unseen Guardian</h2>
+                        <p class="mt-4 text-lg text-gray-700">The XCare H5 Pro is a revolutionary non-contact vital signs radar. Using advanced mmWave technology, it operates without wearables or cameras, becoming an "unseen guardian" that delivers continuous, accurate monitoring while completely preserving privacy and dignity.</p>
+                        <div class="mt-6 space-y-3">
+                            <p class="flex items-center text-gray-800"><span class="text-secondary font-bold text-xl mr-3">✓</span> Heart Rate Accuracy: ≤ ±5 bpm</p>
+                            <p class="flex items-center text-gray-800"><span class="text-secondary font-bold text-xl mr-3">✓</span> Respiration Accuracy: ≤ ±5 bpm</p>
+                            <p class="flex items-center text-gray-800"><span class="text-secondary font-bold text-xl mr-3">✓</span> Fall & Bed-Exit Detection</p>
+                        </div>
+                    </div>
+                    <div class="flex justify-center items-center">
+                        <img src="image/usecase.png" alt="An elderly man sleeps peacefully while the XCare device monitors him from the wall." class="rounded-2xl shadow-2xl max-w-sm w-full" onerror="this.onerror=null;this.src='https://placehold.co/600x800/e0e0e0/333?text=Product+in+Use';">
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Product Display Section -->
+            <section id="product-display" class="my-16 print-section bg-gray-50 -mx-6 -md:mx-12 py-16 px-6 md:px-12">
+                <h2 class="section-title">Meet the XCare H5 Pro</h2>
+                <p class="section-subtitle">Discreetly designed to blend into any environment, providing powerful protection without intrusion.</p>
+                <div class="max-w-xs mx-auto">
+                    <img src="image/product.jpg" alt="The XCare H5 Pro device." class="rounded-2xl shadow-2xl w-full" onerror="this.onerror=null;this.src='https://placehold.co/600x600/ffffff/27296A?text=Product.jpg';">
+                </div>
+            </section>
+
+            <!-- Key Features Section -->
+            <section class="my-16 print-section">
+                <h2 class="section-title">A Complete Circle of Protection</h2>
+                <p class="section-subtitle">Packed with powerful, thoughtful features designed to provide holistic safety and connectivity.</p>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                    <div class="feature-card"><p class="text-4xl">❤️</p><h3 class="mt-4 font-bold">Vital Signs Monitoring</h3></div>
+                    <div class="feature-card"><p class="text-4xl">🌙</p><h3 class="mt-4 font-bold">Pro Sleep Reports</h3></div>
+                    <div class="feature-card"><p class="text-4xl">📡</p><h3 class="mt-4 font-bold">4G & Wi-Fi Alerts</h3></div>
+                    <div class="feature-card"><p class="text-4xl">🛡️</p><h3 class="mt-4 font-bold">On-Device AI</h3></div>
+                    <div class="feature-card"><p class="text-4xl">🔄</p><h3 class="mt-4 font-bold">OTA Updates</h3></div>
+                    <div class="feature-card"><p class="text-4xl">🎙️</p><h3 class="mt-4 font-bold">Two-Way Voice</h3></div>
+                </div>
+            </section>
+            
+            <!-- Use Cases Section -->
+            <section class="my-16 print-section bg-gray-50 -mx-6 -md:mx-12 py-16 px-6 md:px-12">
+                <h2 class="section-title">Professional Solutions for Every Care Setting</h2>
+                <p class="section-subtitle">Whether in a professional nursing facility or a warm family home, XCare H5 Pro delivers the right protection.</p>
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <!-- Nursing Home Card -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col">
+                        <img src="image/usecase2.png" alt="A caregiver reviews health data on a futuristic interface." class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/333?text=Nursing+Home+Use+Case';">
+                        <div class="p-8 flex-grow">
+                            <h3 class="text-2xl font-bold text-primary mb-3">Empowering Professional Care Facilities</h3>
+                            <p class="text-gray-600 mb-4">A centralized dashboard allows staff to monitor real-time vital signs and in-bed status for multiple residents, streamlining management. The system automatically logs anomalies and generates professional reports to assist with health assessments, dramatically improving care efficiency and quality.</p>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-start"><span class="text-primary font-bold mr-2">✓</span> <strong>Centralized Management:</strong> Oversee all devices from a single platform.</li>
+                                <li class="flex items-start"><span class="text-primary font-bold mr-2">✓</span> <strong>Proactive Alerts:</strong> Pushes notifications for anomalies, shifting from reactive to proactive care.</li>
+                                <li class="flex items-start"><span class="text-primary font-bold mr-2">✓</span> <strong>Data-Driven Insights:</strong> Provides objective data to support personalized care plans.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Home Care Card -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col">
+                        <img src="image/usecase1.png" alt="A family views health monitoring data together at home." class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/333?text=Home+Care+Use+Case';">
+                        <div class="p-8 flex-grow">
+                            <h3 class="text-2xl font-bold text-primary mb-3">Protecting Independent Living at Home</h3>
+                            <p class="text-gray-600 mb-4">Provide an invisible safety net for seniors aging in place. Family members can check on their loved one's health data and sleep reports anytime via the mobile app. In case of a fall or abnormal vital signs, the system immediately alerts the family through app notifications, SMS, and phone calls.</p>
+                             <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-start"><span class="text-primary font-bold mr-2">✓</span> <strong>Remote Peace of Mind:</strong> Know how your loved one is doing, anytime, anywhere.</li>
+                                <li class="flex items-start"><span class="text-primary font-bold mr-2">✓</span> <strong>Instant Alerts:</strong> Multi-channel notifications ensure you’re the first to know in an emergency.</li>
+                                <li class="flex items-start"><span class="text-primary font-bold mr-2">✓</span> <strong>Respect for Privacy:</strong> The camera-free design protects safety and, most importantly, dignity.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Data Insights Section -->
+            <section class="my-16 print-section">
+                <h2 class="section-title">From Data to Insight: Sleep Quality Analysis</h2>
+                <p class="section-subtitle">XCare does more than just monitor—it translates raw data into actionable health insights. The sleep summary report helps track sleep quality over time, identifying patterns that could indicate underlying health issues.</p>
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <div class="chart-container">
+                        <canvas id="sleepQualityChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-primary text-white text-center p-8 no-print">
+            <h3 class="text-2xl font-bold">Learn More or Request a Demo</h3>
+            <p class="mt-2">Contact us to step into the future of smart elder care</p>
+            <p class="mt-4 text-lg font-semibold">contact@example.com | 1-800-123-4567</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const primaryBlue = '#27296A';
+        const primaryGold = '#BD9B2F';
+        const secondaryBlue = '#6F6EB2';
+        const grayText = '#6c757d';
+
+        // Chart.js Global Configuration
+        const chartTooltipConfig = {
+            plugins: {
+                legend: {
+                    labels: {
+                        color: primaryBlue,
+                        font: {
+                            weight: 'bold',
+                            size: 14,
+                            family: "'Montserrat', sans-serif"
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    ticks: { color: primaryBlue, beginAtZero: true },
+                    grid: { color: '#e5e7eb' }
+                },
+                x: {
+                    ticks: { color: primaryBlue, font: { weight: 'bold' } },
+                    grid: { display: false }
+                }
+            },
+            maintainAspectRatio: false,
+        };
+
+        // Sleep Quality Chart
+        new Chart(document.getElementById('sleepQualityChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [
+                    {
+                        label: 'Deep Sleep (Hours)',
+                        data: [1.8, 2.1, 1.5, 2.5, 1.9, 2.2, 2.0],
+                        backgroundColor: primaryBlue,
+                        borderRadius: 4,
+                    },
+                    {
+                        label: 'Light Sleep (Hours)',
+                        data: [4.2, 3.8, 4.5, 3.5, 4.1, 3.9, 4.3],
+                        backgroundColor: secondaryBlue,
+                         borderRadius: 4,
+                    },
+                    {
+                        label: 'Awake (Hours)',
+                        data: [0.5, 0.4, 0.8, 0.3, 0.6, 0.4, 0.5],
+                        backgroundColor: '#FFD15C', // A lighter gold for better contrast
+                         borderRadius: 4,
+                    }
+                ]
+            },
+            options: {
+                ...chartTooltipConfig,
+                scales: {
+                    x: { stacked: true, ...chartTooltipConfig.scales.x },
+                    y: { 
+                        stacked: true, 
+                        ...chartTooltipConfig.scales.y, 
+                        title: { 
+                            display: true, 
+                            text: 'Hours', 
+                            color: grayText,
+                            font: { size: 14, family: "'Montserrat', sans-serif" }
+                        } 
+                    }
+                },
+                plugins: {
+                    ...chartTooltipConfig.plugins,
+                    tooltip: {
+                         callbacks: {
+                             label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    label += context.parsed.y + ' hrs';
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
