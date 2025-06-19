@@ -3,319 +3,553 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XCare H5 Pro - Smart Elder Care Solution</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <title>XCare H5 Pro - The Unseen Guardian</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* CSS Reset and Global Styles based on Brand Guidelines */
+        :root {
+            --brand-primary-blue: #27296A;
+            --brand-primary-gold: #BD9B2F;
+            --brand-secondary-gray: #474748;
+            --text-color-primary: #27296A; /* Using primary blue for main text */
+            --text-color-secondary: #474748; /* Using dark gray for secondary text */
+            --bg-color-light: #f5f5f7;
+            --bg-color-white: #ffffff;
+            --accent-color: #BD9B2F; /* Gold for CTAs and highlights */
+            --font-family-brand: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            --transition-speed: 0.5s;
+        }
+
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #f8f9fa;
-            color: #333;
+            margin: 0;
+            font-family: var(--font-family-brand);
+            background-color: var(--bg-color-white);
+            color: var(--text-color-primary);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-        .text-primary { color: #27296A; }
-        .text-secondary { color: #BD9B2F; }
-        .bg-primary { background-color: #27296A; }
-        .bg-secondary { background-color: #BD9B2F; }
-        .border-primary { border-color: #27296A; }
-        .border-secondary { border-color: #BD9B2F; }
 
-        .hero-section {
-            background: linear-gradient(rgba(39, 41, 106, 0.8), rgba(39, 41, 106, 0.8)), url('usecase1.jpg');
-            background-size: cover;
-            background-position: center;
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 22px;
+            box-sizing: border-box;
+        }
+
+        section {
+            padding: 120px 0;
+            text-align: center;
+            overflow: hidden;
         }
         
-        .section-title {
-            font-weight: 900;
-            font-size: 2.25rem;
-            line-height: 2.5rem;
-            text-align: center;
-            margin-bottom: 1rem;
-            color: #27296A;
+        section.bg-light {
+             background-color: var(--bg-color-light);
         }
 
-        .section-subtitle {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto 3rem auto;
-            color: #6c757d;
-            font-size: 1.125rem;
+        h1, h2, h3 {
+            margin: 0;
+            font-weight: 700; /* Bolder for DINPro feel */
+            letter-spacing: -0.005em;
         }
 
-        .feature-card {
-            background-color: white;
-            border-radius: 0.75rem;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        h1 {
+            font-size: 56px;
+            margin-bottom: 16px;
         }
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(39, 41, 106, 0.1), 0 10px 10px -5px rgba(39, 41, 106, 0.04);
+
+        h2 {
+            font-size: 48px;
+            margin-bottom: 24px;
+        }
+
+        h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: var(--text-color-primary);
+        }
+
+        p {
+            font-size: 21px;
+            color: var(--text-color-secondary);
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
         }
         
-        .chart-container {
-            position: relative;
-            height: 400px;
-            width: 100%;
+        .p-large {
+            font-size: 24px;
             max-width: 800px;
-            margin: auto;
+            line-height: 1.5;
+        }
+        
+        .p-small {
+            font-size: 17px;
+            line-height: 1.5;
         }
 
-        /* Print Styles */
-        @media print {
-            body {
-                background-color: #ffffff !important;
-                -webkit-print-color-adjust: exact;
+        /* Animation */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .reveal-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Header Navigation */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            z-index: 100;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .main-nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 52px;
+        }
+        
+        .nav-logo {
+            font-weight: 700;
+            font-size: 20px;
+            text-decoration: none;
+            color: var(--text-color-primary);
+        }
+        
+        .nav-button {
+            background-color: var(--accent-color);
+            color: #fff;
+            text-decoration: none;
+            padding: 6px 16px;
+            border-radius: 980px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        .nav-button:hover {
+            background-color: #a58829; /* Darker gold on hover */
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding-top: 150px; /* Increased padding */
+            padding-bottom: 80px;
+            text-align: center;
+        }
+
+        .hero .brand-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 8px;
+        }
+
+        /* Product Shot Section */
+        #product-shot {
+            padding-top: 0;
+            padding-bottom: 120px;
+            background-color: var(--bg-color-white);
+        }
+        #product-shot img {
+            max-width: 450px; /* Constrain size for a balanced look */
+            width: 100%; /* Responsive within the container */
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 50px;
+            margin-top: 80px;
+        }
+        
+        .feature-item .icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--accent-color); /* Use accent color for icons */
+        }
+
+        /* Science Section */
+        .science-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-top: 80px;
+            text-align: left;
+        }
+
+        .science-visual {
+            background-color: var(--bg-color-light);
+            border-radius: 24px;
+            width: 100%;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .science-visual img {
+            max-width: 85%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* Specs Section */
+        .specs-table {
+            display: grid;
+            grid-template-columns: max-content 1fr;
+            gap: 16px 40px;
+            max-width: 650px;
+            margin: 60px auto 0 auto;
+            text-align: left;
+            font-size: 19px;
+        }
+
+        .specs-table .param {
+            font-weight: 600;
+            color: var(--text-color-primary);
+        }
+
+        .specs-table .value {
+            color: var(--text-color-secondary);
+        }
+        
+        /* Trust Section */
+        .trust-logos {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin: 50px 0;
+            align-items: center;
+        }
+        
+        .trust-logos img {
+            height: 60px;
+            filter: grayscale(1);
+            opacity: 0.7;
+        }
+        
+        .trust-compliance {
+            margin-top: 30px;
+            font-size: 14px;
+            color: var(--text-color-secondary);
+            font-family: monospace;
+        }
+        
+        /* Ecosystem Section */
+        .ecosystem-visual {
+            margin-top: 60px;
+        }
+        
+        .ecosystem-visual img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Footer CTA */
+        footer {
+            background-color: var(--brand-primary-blue); /* Use brand blue for footer */
+            color: #fff;
+            padding: 80px 0;
+        }
+
+        footer h2, footer p {
+            color: #fff;
+        }
+        
+        .main-cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #fff;
+            padding: 16px 32px;
+            border-radius: 980px;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .main-cta-button:hover {
+            background-color: #a58829; /* Darker gold on hover */
+        }
+
+        .app-stores {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .app-stores img {
+            height: 40px;
+        }
+        
+        .footer-nav {
+            margin-top: 60px;
+            font-size: 12px;
+            color: #a1a1a6;
+        }
+        
+        .footer-nav a {
+            color: #a1a1a6;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        
+        .footer-nav a:hover {
+            color: #fff;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 { font-size: 44px; }
+            h2 { font-size: 36px; }
+            p { font-size: 19px; }
+            section { padding: 80px 0; }
+            
+            .hero {
+                padding-top: 100px;
+                padding-bottom: 40px;
             }
-            .no-print { display: none; }
-            .print-section {
-                padding-top: 1.5rem;
-                padding-bottom: 1.5rem;
-                page-break-inside: avoid;
+
+            .science-grid {
+                grid-template-columns: 1fr;
             }
-            .hero-section {
-                background: none !important;
-                padding-top: 2rem !important;
-                padding-bottom: 2rem !important;
+            
+            .science-grid .science-visual {
+                order: -1; /* Move visual above text on mobile */
+                margin-bottom: 40px;
+                height: 300px;
             }
-            .hero-section h1, .hero-section p {
-                color: #27296A !important;
+            
+            .science-grid, .specs-table {
+                text-align: center;
             }
-             .section-title, .section-subtitle, .text-primary {
-                color: #27296A !important;
-            }
-            .feature-card {
-                box-shadow: none !important;
-                border: 1px solid #e5e7eb;
+            
+            .specs-table {
+                 gap: 12px 20px;
+                 font-size: 17px;
             }
         }
     </style>
 </head>
 <body>
+    <nav class="main-nav">
+        <div class="container">
+            <a href="#" class="nav-logo">XCare</a>
+            <a href="#footer-cta" class="nav-button">Order Now</a>
+        </div>
+    </nav>
 
-    <!-- Main Container -->
-    <div class="max-w-6xl mx-auto bg-white shadow-xl">
+    <header class="hero">
+        <div class="container reveal-up">
+            <div class="brand-name">XCare H5 Pro</div>
+            <h1>The Unseen Guardian.</h1>
+            <p class="p-large">Non-Contact mmWave Vital Signs Radar. Continuously and non-intrusively watch over the well-being of your loved ones.</p>
+        </div>
+    </header>
+    
+    <section id="product-shot">
+        <div class="container reveal-up">
+            <!-- The product image is placed here. -->
+            <img src="image/product.jpg" alt="The XCare H5 Pro device" onerror="this.onerror=null;this.src='https://placehold.co/450x450/f5f5f7/27296A?text=XCare+H5+Pro';">
+        </div>
+    </section>
 
-        <!-- Header / Hero Section -->
-        <header class="hero-section text-white text-center py-20 px-6 print-section">
-            <h1 class="text-4xl md:text-6xl font-black tracking-tight">XCare H5 Pro</h1>
-            <p class="mt-4 text-xl md:text-2xl font-light">The Future of Smart Elder Care</p>
-            <p class="mt-2 text-lg md:text-xl font-light max-w-3xl mx-auto">Guarding lives with technology. A precise, dignified care solution for professional nursing facilities and home care.</p>
-        </header>
+    <main>
+        <section class="bg-light">
+            <div class="container reveal-up">
+                <h2>Preserve their independence.<br>Secure your peace of mind.</h2>
+                <p class="p-large">
+                    XCare is designed to be invisible, safeguarding the independence and dignity of your elders. It operates silently in the background, ensuring that help is always on standby when needed. No intrusive cameras, no wearables required. Just life, continuing with freedom and safety.
+                </p>
+            </div>
+        </section>
 
-        <main class="p-6 md:p-12">
-
-            <!-- The Challenge Section -->
-            <section class="my-16 print-section">
-                <h2 class="section-title">The Unseen Challenge of Modern Elder Care</h2>
-                <p class="section-subtitle">Whether in professional care facilities or at home, the pressure is on to provide efficient, continuous monitoring for the health and safety of our elders.</p>
-                <div class="grid md:grid-cols-2 gap-8 text-center">
-                    <div class="bg-gray-50 p-8 rounded-lg">
-                        <h3 class="text-2xl font-bold text-primary mb-3">For Nursing Homes: Efficiency & Staffing Bottlenecks</h3>
-                        <p class="text-gray-600">Caregivers are stretched thin, managing multiple residents at once, making 24/7 observation nearly impossible. Nightly rounds can disturb sleep, and delayed responses to emergencies like falls or vital sign changes can have serious consequences.</p>
+        <section id="features">
+            <div class="container">
+                <div class="reveal-up">
+                    <h2>Intelligence that Cares.</h2>
+                    <p>The XCare H5 Pro is packed with powerful, thoughtful features designed to provide a complete circle of protection and peace of mind.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-item reveal-up" style="transition-delay: 0.1s;">
+                        <div class="icon">❤️</div>
+                        <h3>Health Monitoring Sensor</h3>
+                        <p class="p-small">Precisely tracks key vitals like heart rate and respiration, providing a clear window into their ongoing health status.</p>
                     </div>
-                    <div class="bg-gray-50 p-8 rounded-lg">
-                        <h3 class="text-2xl font-bold text-primary mb-3">For Home Care: The Anxiety of Distance</h3>
-                        <p class="text-gray-600">The "9073" care model shows that the vast majority of seniors prefer to age in place. For family members juggling work and life, this creates constant worry about the safety of loved ones living alone. They need a solution that respects independence while providing real-time peace of mind.</p>
+                    <div class="feature-item reveal-up" style="transition-delay: 0.2s;">
+                        <div class="icon">🌙</div>
+                        <h3>Sleep Summary Report</h3>
+                        <p class="p-small">Goes beyond simple tracking to deliver insightful daily and weekly reports on sleep quality, patterns, and disturbances.</p>
+                    </div>
+                    <div class="feature-item reveal-up" style="transition-delay: 0.3s;">
+                        <div class="icon">📡</div>
+                        <h3>Wi-Fi & 4G Alerts</h3>
+                        <p class="p-small">Ensures that critical alerts are sent reliably, with dual connectivity options that keep you informed, no matter what.</p>
+                    </div>
+                    <div class="feature-item reveal-up" style="transition-delay: 0.4s;">
+                        <div class="icon">🛡️</div>
+                        <h3>Private AI Protection</h3>
+                        <p class="p-small">All sensitive data is processed on the device. Nothing is sent to the cloud, ensuring total privacy and security.</p>
+                    </div>
+                    <div class="feature-item reveal-up" style="transition-delay: 0.5s;">
+                        <div class="icon">🔄</div>
+                        <h3>Automatic Updates</h3>
+                        <p class="p-small">The device software updates automatically, continuously improving with new features and enhanced performance.</p>
+                    </div>
+                    <div class="feature-item reveal-up" style="transition-delay: 0.6s;">
+                        <div class="icon">🎙️</div>
+                        <h3>Voice Intercom</h3>
+                        <p class="p-small">Speak directly through the device. Offer a reassuring word or provide guidance from anywhere, right when it's needed.</p>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- The Solution Section -->
-            <section class="my-16 print-section">
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <h2 class="text-3xl md:text-4xl font-extrabold text-primary">The Solution: XCare H5 Pro, The Unseen Guardian</h2>
-                        <p class="mt-4 text-lg text-gray-700">The XCare H5 Pro is a revolutionary non-contact vital signs radar. Using advanced mmWave technology, it operates without wearables or cameras, becoming an "unseen guardian" that delivers continuous, accurate monitoring while completely preserving privacy and dignity.</p>
-                        <div class="mt-6 space-y-3">
-                            <p class="flex items-center text-gray-800"><span class="text-secondary font-bold text-xl mr-3">✓</span> Heart Rate Accuracy: ≤ ±5 bpm</p>
-                            <p class="flex items-center text-gray-800"><span class="text-secondary font-bold text-xl mr-3">✓</span> Respiration Accuracy: ≤ ±5 bpm</p>
-                            <p class="flex items-center text-gray-800"><span class="text-secondary font-bold text-xl mr-3">✓</span> Fall & Bed-Exit Detection</p>
-                        </div>
-                    </div>
-                    <div class="flex justify-center items-center">
-                        <img src="image/usecase.png" alt="An elderly man sleeps peacefully while the XCare device monitors him from the wall." class="rounded-2xl shadow-2xl max-w-sm w-full" onerror="this.onerror=null;this.src='https://placehold.co/600x800/e0e0e0/333?text=Product+in+Use';">
-                    </div>
+        <section id="science" class="bg-light">
+            <div class="container">
+                <div class="reveal-up">
+                    <h2>The Science Behind the Serenity.</h2>
                 </div>
-            </section>
-            
-            <!-- Product Display Section -->
-            <section id="product-display" class="my-16 print-section bg-gray-50 -mx-6 -md:mx-12 py-16 px-6 md:px-12">
-                <h2 class="section-title">Meet the XCare H5 Pro</h2>
-                <p class="section-subtitle">Discreetly designed to blend into any environment, providing powerful protection without intrusion.</p>
-                <div class="max-w-xs mx-auto">
-                    <img src="image/product.jpg" alt="The XCare H5 Pro device." class="rounded-2xl shadow-2xl w-full" onerror="this.onerror=null;this.src='https://placehold.co/600x600/ffffff/27296A?text=Product.jpg';">
-                </div>
-            </section>
-
-            <!-- Key Features Section -->
-            <section class="my-16 print-section">
-                <h2 class="section-title">A Complete Circle of Protection</h2>
-                <p class="section-subtitle">Packed with powerful, thoughtful features designed to provide holistic safety and connectivity.</p>
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-                    <div class="feature-card"><p class="text-4xl">❤️</p><h3 class="mt-4 font-bold">Vital Signs Monitoring</h3></div>
-                    <div class="feature-card"><p class="text-4xl">🌙</p><h3 class="mt-4 font-bold">Pro Sleep Reports</h3></div>
-                    <div class="feature-card"><p class="text-4xl">📡</p><h3 class="mt-4 font-bold">4G & Wi-Fi Alerts</h3></div>
-                    <div class="feature-card"><p class="text-4xl">🛡️</p><h3 class="mt-4 font-bold">On-Device AI</h3></div>
-                    <div class="feature-card"><p class="text-4xl">🔄</p><h3 class="mt-4 font-bold">OTA Updates</h3></div>
-                    <div class="feature-card"><p class="text-4xl">🎙️</p><h3 class="mt-4 font-bold">Two-Way Voice</h3></div>
-                </div>
-            </section>
-            
-            <!-- Use Cases Section -->
-            <section class="my-16 print-section bg-gray-50 -mx-6 -md:mx-12 py-16 px-6 md:px-12">
-                <h2 class="section-title">Professional Solutions for Every Care Setting</h2>
-                <p class="section-subtitle">Whether in a professional nursing facility or a warm family home, XCare H5 Pro delivers the right protection.</p>
-                <div class="grid lg:grid-cols-2 gap-8">
-                    <!-- Nursing Home Card -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col">
-                        <img src="image/usecase2.png" alt="A caregiver reviews health data on a futuristic interface." class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/333?text=Nursing+Home+Use+Case';">
-                        <div class="p-8 flex-grow">
-                            <h3 class="text-2xl font-bold text-primary mb-3">Empowering Professional Care Facilities</h3>
-                            <p class="text-gray-600 mb-4">A centralized dashboard allows staff to monitor real-time vital signs and in-bed status for multiple residents, streamlining management. The system automatically logs anomalies and generates professional reports to assist with health assessments, dramatically improving care efficiency and quality.</p>
-                            <ul class="space-y-2 text-gray-700">
-                                <li class="flex items-start"><span class="text-primary font-bold mr-2">✓</span> <strong>Centralized Management:</strong> Oversee all devices from a single platform.</li>
-                                <li class="flex items-start"><span class="text-primary font-bold mr-2">✓</span> <strong>Proactive Alerts:</strong> Pushes notifications for anomalies, shifting from reactive to proactive care.</li>
-                                <li class="flex items-start"><span class="text-primary font-bold mr-2">✓</span> <strong>Data-Driven Insights:</strong> Provides objective data to support personalized care plans.</li>
-                            </ul>
-                        </div>
+                <div class="science-grid">
+                    <div class="reveal-up">
+                        <h3>Seeing the Invisible</h3>
+                        <p class="p-small">XCare utilizes advanced 60 GHz millimeter-wave technology. Unlike a camera, it perceives the space using safe, low-power radio waves. It can accurately detect the most subtle vital signs, like the rise and fall of a chest or a heartbeat, even through blankets or in complete darkness.</p>
                     </div>
-                    <!-- Home Care Card -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col">
-                        <img src="image/usecase1.png" alt="A family views health monitoring data together at home." class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/333?text=Home+Care+Use+Case';">
-                        <div class="p-8 flex-grow">
-                            <h3 class="text-2xl font-bold text-primary mb-3">Protecting Independent Living at Home</h3>
-                            <p class="text-gray-600 mb-4">Provide an invisible safety net for seniors aging in place. Family members can check on their loved one's health data and sleep reports anytime via the mobile app. In case of a fall or abnormal vital signs, the system immediately alerts the family through app notifications, SMS, and phone calls.</p>
-                             <ul class="space-y-2 text-gray-700">
-                                <li class="flex items-start"><span class="text-primary font-bold mr-2">✓</span> <strong>Remote Peace of Mind:</strong> Know how your loved one is doing, anytime, anywhere.</li>
-                                <li class="flex items-start"><span class="text-primary font-bold mr-2">✓</span> <strong>Instant Alerts:</strong> Multi-channel notifications ensure you’re the first to know in an emergency.</li>
-                                <li class="flex items-start"><span class="text-primary font-bold mr-2">✓</span> <strong>Respect for Privacy:</strong> The camera-free design protects safety and, most importantly, dignity.</li>
-                            </ul>
-                        </div>
+                    <div class="science-visual reveal-up">
+                        <!-- Placeholder for a visual animation -->
+                        <img src="image/usecase.png" alt="Millimeter-Wave Sensing Animation" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e8e8e8/6e6e73?text=Sensing+Animation';">
                     </div>
                 </div>
-            </section>
-
-            <!-- Data Insights Section -->
-            <section class="my-16 print-section">
-                <h2 class="section-title">From Data to Insight: Sleep Quality Analysis</h2>
-                <p class="section-subtitle">XCare does more than just monitor—it translates raw data into actionable health insights. The sleep summary report helps track sleep quality over time, identifying patterns that could indicate underlying health issues.</p>
-                <div class="bg-white p-6 rounded-xl shadow-lg">
-                    <div class="chart-container">
-                        <canvas id="sleepQualityChart"></canvas>
+                <div class="science-grid" style="margin-top: 80px;">
+                     <div class="science-visual reveal-up">
+                        <!-- Placeholder for a visual diagram -->
+                        <img src="https://placehold.co/600x400/e8e8e8/6e6e73?text=On-Device+AI+Processing" alt="On-Device AI Processing Diagram">
+                    </div>
+                    <div class="reveal-up">
+                        <h3>On-Device Intelligence</h3>
+                        <p class="p-small">Your family's privacy is paramount. That's why all sensitive data is analyzed locally on XCare's dedicated AI processor. Alerts are only sent when an emergency is detected. No images are ever captured, and no raw health data is stored in the cloud.</p>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
+        
+        <section id="specs">
+            <div class="container reveal-up">
+                <h2>Meticulously Crafted for the Home.</h2>
+                <p>Every detail of XCare is designed to blend into the home environment, ensuring exceptional performance and simple installation for silent, unobtrusive protection.</p>
+                <div class="specs-table">
+                    <div class="param">Core Technology</div><div class="value">60 GHz Millimeter-Wave Radar</div>
+                    <div class="param">Heart Rate Accuracy</div><div class="value">≤ ±5 bpm</div>
+                    <div class="param">Respiration Accuracy</div><div class="value">≤ ±5 bpm</div>
+                    <div class="param">Effective Detection Range</div><div class="value">0.5m – 1.5m</div>
+                    <div class="param">Horizontal Coverage</div><div class="value">Approx. 1.2 m (standard bed width)</div>
+                    <div class="param">Installation</div><div class="value">Ceiling Mount (Recommended)</div>
+                    <div class="param">Recommended Height</div><div class="value">2.3m – 3.3m</div>
+                    <div class="param">Connectivity</div><div class="value">Wi-Fi / 4G (Optional)</div>
+                    <div class="param">Power Input</div><div class="value">DC 5V / 2A (Adapter included)</div>
+                </div>
+            </div>
+        </section>
 
-        </main>
+        <section id="trust" class="bg-light">
+            <div class="container reveal-up">
+                <h2>Certified and Trusted.</h2>
+                <p>XCare is designed and manufactured to the highest standards of safety and reliability, verified by independent, authoritative third-party testing to comply with national safety regulations for household appliances.</p>
+                <div class="trust-logos">
+                    <img src="https://placehold.co/200x80/ffffff/a1a1a6?text=CNAS" alt="CNAS Certification Logo">
+                    <img src="https://placehold.co/200x80/ffffff/a1a1a6?text=CMA" alt="CMA Certification Logo">
+                </div>
+                <div class="trust-compliance">
+                    Compliance Standard: GB 4706.1-2005 (Safety of household and similar electrical appliances)
+                </div>
+            </div>
+        </section>
 
-        <!-- Footer -->
-        <footer class="bg-primary text-white text-center p-8 no-print">
-            <h3 class="text-2xl font-bold">Learn More or Request a Demo</h3>
-            <p class="mt-2">Contact us to step into the future of smart elder care</p>
-            <p class="mt-4 text-lg font-semibold">contact@example.com | 1-800-123-4567</p>
-        </footer>
+        <section id="ecosystem">
+            <div class="container reveal-up">
+                <h2>A Complete Circle of Care.</h2>
+                <p>XCare is more than a device; it's a connected ecosystem. You can view real-time vital signs and historical trends through the XCare App. When the system detects an anomaly, you receive immediate alerts via the app, SMS, or a phone call. Plus, with two-way voice intercom, you can speak directly through the device to offer comfort or instructions. True peace of mind, right at your fingertips.</p>
+                <div class="ecosystem-visual">
+                    <img src="https://images.ctfassets.net/lzny33ho1g45/6N43628hN3y4b4aFmB5B6C/de6b7e05b5971e459a3536b3d42b992a/Group_2550.png?w=1400" alt="XCare App Interface Showcase">
+                </div>
+            </div>
+        </section>
+    </main>
 
-    </div>
+    <footer id="footer-cta">
+        <div class="container reveal-up">
+            <h2>Bring Peace of Mind Home.</h2>
+            <p>Ready to add a layer of unseen protection for your beloved family?</p>
+            <a href="#" class="main-cta-button">Order XCare H5 Pro</a>
+            <div class="app-stores">
+                <a href="#"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store"></a>
+                <a href="#"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play"></a>
+            </div>
+            <div class="footer-nav">
+                <a href="#">Support</a> |
+                <a href="#">Privacy Policy</a> |
+                <a href="#">Contact Us</a>
+                 <p style="font-size: 12px; color: #a1a1a6; margin-top: 24px;">© 2024 XCare Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        const primaryBlue = '#27296A';
-        const primaryGold = '#BD9B2F';
-        const secondaryBlue = '#6F6EB2';
-        const grayText = '#6c757d';
+        document.addEventListener('DOMContentLoaded', function() {
+            // Reveal elements on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
 
-        // Chart.js Global Configuration
-        const chartTooltipConfig = {
-            plugins: {
-                legend: {
-                    labels: {
-                        color: primaryBlue,
-                        font: {
-                            weight: 'bold',
-                            size: 14,
-                            family: "'Montserrat', sans-serif"
-                        }
-                    }
-                }
-            },
-            scales: {
-                y: {
-                    ticks: { color: primaryBlue, beginAtZero: true },
-                    grid: { color: '#e5e7eb' }
-                },
-                x: {
-                    ticks: { color: primaryBlue, font: { weight: 'bold' } },
-                    grid: { display: false }
-                }
-            },
-            maintainAspectRatio: false,
-        };
+            document.querySelectorAll('.reveal-up').forEach(el => {
+                observer.observe(el);
+            });
 
-        // Sleep Quality Chart
-        new Chart(document.getElementById('sleepQualityChart'), {
-            type: 'bar',
-            data: {
-                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-                datasets: [
-                    {
-                        label: 'Deep Sleep (Hours)',
-                        data: [1.8, 2.1, 1.5, 2.5, 1.9, 2.2, 2.0],
-                        backgroundColor: primaryBlue,
-                        borderRadius: 4,
-                    },
-                    {
-                        label: 'Light Sleep (Hours)',
-                        data: [4.2, 3.8, 4.5, 3.5, 4.1, 3.9, 4.3],
-                        backgroundColor: secondaryBlue,
-                         borderRadius: 4,
-                    },
-                    {
-                        label: 'Awake (Hours)',
-                        data: [0.5, 0.4, 0.8, 0.3, 0.6, 0.4, 0.5],
-                        backgroundColor: '#FFD15C', // A lighter gold for better contrast
-                         borderRadius: 4,
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    // Check if the link is just a placeholder
+                    if(this.getAttribute('href') === '#') {
+                        return;
                     }
-                ]
-            },
-            options: {
-                ...chartTooltipConfig,
-                scales: {
-                    x: { stacked: true, ...chartTooltipConfig.scales.x },
-                    y: { 
-                        stacked: true, 
-                        ...chartTooltipConfig.scales.y, 
-                        title: { 
-                            display: true, 
-                            text: 'Hours', 
-                            color: grayText,
-                            font: { size: 14, family: "'Montserrat', sans-serif" }
-                        } 
-                    }
-                },
-                plugins: {
-                    ...chartTooltipConfig.plugins,
-                    tooltip: {
-                         callbacks: {
-                             label: function(context) {
-                                let label = context.dataset.label || '';
-                                if (label) {
-                                    label += ': ';
-                                }
-                                if (context.parsed.y !== null) {
-                                    label += context.parsed.y + ' hrs';
-                                }
-                                return label;
-                            }
-                        }
-                    }
-                }
-            }
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
         });
     </script>
+
 </body>
 </html>
