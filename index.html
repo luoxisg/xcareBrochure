@@ -344,6 +344,22 @@
                 grid-column: 2;
             }
         }
+   /* ===== A4 无痛导出样式 ===== */
+@media print {
+  @page { size: A4; margin: 12mm; }
+  html, body { height: auto !important; }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  nav, footer, .cta, .order-btn, .order, .site-footer { display: none !important; }
+  h1, h2, h3, h4, p, ul, ol { break-inside: avoid; }
+  h1, h2, h3 { break-after: avoid; margin-top: 0.2em; }
+  img, figure, .card, .feature, .spec, .section { page-break-inside: avoid; break-inside: avoid; }
+  img { max-width: 100% !important; height: auto !important; }
+  a[href]:after { content: ""; }
+  .section { margin-bottom: 10mm; }
+  .page-break-before { break-before: page; page-break-before: always; }
+  .page-break-after  { break-after:  page; page-break-after:  always; }
+}
+
     </style>
 </head>
 <body>
@@ -528,3 +544,4 @@
 
 </body>
 </html>
+
