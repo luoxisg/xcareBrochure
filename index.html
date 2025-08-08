@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -192,27 +192,31 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 80px;
-            align-items: center;
+            align-items: flex-start;
             margin-top: 80px;
             text-align: left;
         }
+        
+        .science-column-item + .science-column-item {
+            margin-top: 60px;
+        }
+
+        .science-grid img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+        }
 
         .science-visual {
-            background-color: var(--bg-color-light);
+            background-color: transparent;
             border-radius: 24px;
             width: 100%;
-            height: 400px;
+            height: auto;
             display: flex;
             align-items: center;
             justify-content: center;
         }
         
-        .science-visual img {
-            max-width: 85%;
-            height: auto;
-            border-radius: 8px;
-        }
-
         /* Specs Section */
         .specs-table {
             display: grid;
@@ -335,12 +339,7 @@
 
             .science-grid {
                 grid-template-columns: 1fr;
-            }
-            
-            .science-grid .science-visual {
-                order: -1; /* Move visual above text on mobile */
-                margin-bottom: 40px;
-                height: 300px;
+                text-align: center;
             }
             
             .science-grid, .specs-table {
@@ -434,23 +433,25 @@
                     <h2>The Science Behind the Serenity.</h2>
                 </div>
                 <div class="science-grid">
-                    <div class="reveal-up">
-                        <h3>Seeing the Invisible</h3>
-                        <p class="p-small">XCare utilizes advanced 60 GHz millimeter-wave technology. Unlike a camera, it perceives the space using safe, low-power radio waves. It can accurately detect the most subtle vital signs, like the rise and fall of a chest or a heartbeat, even through blankets or in complete darkness.</p>
+                    <!-- Left Column -->
+                    <div class="science-column">
+                        <div class="science-column-item reveal-up">
+                            <h3>Seeing the Invisible</h3>
+                            <p class="p-small" style="max-width: 100%;">XCare utilizes advanced 60 GHz millimeter-wave technology. Unlike a camera, it perceives the space using safe, low-power radio waves. It can accurately detect the most subtle vital signs, like the rise and fall of a chest or a heartbeat, even through blankets or in complete darkness.</p>
+                        </div>
+                        <div class="science-column-item reveal-up">
+                            <img src="image/screen.jpg" alt="Health Monitor App Interface">
+                        </div>
                     </div>
-                    <div class="science-visual reveal-up">
-                        <!-- Placeholder for a visual animation -->
-                        <img src="image/usecase.png" alt="Millimeter-Wave Sensing Animation" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e8e8e8/6e6e73?text=Sensing+Animation';">
-                    </div>
-                </div>
-                <div class="science-grid" style="margin-top: 80px;">
-                     <div class="science-visual reveal-up">
-                        <!-- Placeholder for a visual diagram -->
-                        <img src="image/screen.jpg" alt="On-Device AI Processing Diagram">
-                    </div>
-                    <div class="reveal-up">
-                        <h3>On-Device Intelligence</h3>
-                        <p class="p-small">Your family's privacy is paramount. That's why all sensitive data is analyzed locally on XCare's dedicated AI processor. Alerts are only sent when an emergency is detected. No images are ever captured, and no raw health data is stored in the cloud.</p>
+                    <!-- Right Column -->
+                    <div class="science-column">
+                        <div class="science-column-item science-visual reveal-up">
+                            <img src="image/usecase.png" alt="Millimeter-Wave Sensing Animation">
+                        </div>
+                        <div class="science-column-item reveal-up">
+                            <h3>On-Device Intelligence</h3>
+                            <p class="p-small" style="max-width: 100%;">Your family's privacy is paramount. That's why all sensitive data is analyzed locally on XCare's dedicated AI processor. Alerts are only sent when an emergency is detected. No images are ever captured, and no raw health data is stored in the cloud.</p>
+                        </div>
                     </div>
                 </div>
             </div>
