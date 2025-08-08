@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -192,29 +192,15 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 80px;
-            align-items: flex-start;
+            align-items: center;
             margin-top: 80px;
             text-align: left;
         }
         
-        .science-column-item + .science-column-item {
-            margin-top: 60px;
-        }
-
         .science-grid img {
             max-width: 100%;
             height: auto;
             border-radius: 12px;
-        }
-
-        .science-visual {
-            background-color: transparent;
-            border-radius: 24px;
-            width: 100%;
-            height: auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         
         /* Specs Section */
@@ -342,13 +328,36 @@
                 text-align: center;
             }
             
-            .science-grid, .specs-table {
+            .science-text, .science-visual {
                 text-align: center;
             }
             
+            .science-grid-reverse .science-visual {
+                grid-row: 1; /* Ensure image is first on mobile */
+            }
+            
             .specs-table {
-                 gap: 12px 20px;
-                 font-size: 17px;
+                display: block;
+                text-align: center;
+            }
+            .specs-table .param {
+                font-weight: 600;
+                color: var(--text-color-primary);
+                font-size: 18px;
+            }
+            .specs-table .value {
+                color: var(--text-color-secondary);
+                margin-bottom: 24px;
+                font-size: 17px;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .science-grid-reverse .science-visual {
+                grid-column: 1;
+            }
+            .science-grid-reverse .science-text {
+                grid-column: 2;
             }
         }
     </style>
@@ -432,26 +441,24 @@
                 <div class="reveal-up">
                     <h2>The Science Behind the Serenity.</h2>
                 </div>
+                <!-- Row 1: Text Left, Image Right -->
                 <div class="science-grid">
-                    <!-- Left Column -->
-                    <div class="science-column">
-                        <div class="science-column-item reveal-up">
-                            <h3>Seeing the Invisible</h3>
-                            <p class="p-small" style="max-width: 100%;">XCare utilizes advanced 60 GHz millimeter-wave technology. Unlike a camera, it perceives the space using safe, low-power radio waves. It can accurately detect the most subtle vital signs, like the rise and fall of a chest or a heartbeat, even through blankets or in complete darkness.</p>
-                        </div>
-                        <div class="science-column-item reveal-up">
-                            <img src="image/screen.jpg" alt="Health Monitor App Interface" style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
-                        </div>
+                    <div class="science-text reveal-up">
+                        <h3>Seeing the Invisible</h3>
+                        <p class="p-small" style="max-width: 100%;">XCare utilizes advanced 60 GHz millimeter-wave technology. Unlike a camera, it perceives the space using safe, low-power radio waves. It can accurately detect the most subtle vital signs, like the rise and fall of a chest or a heartbeat, even through blankets or in complete darkness.</p>
                     </div>
-                    <!-- Right Column -->
-                    <div class="science-column">
-                        <div class="science-column-item science-visual reveal-up">
-                            <img src="image/usecase.png" alt="Millimeter-Wave Sensing Animation">
-                        </div>
-                        <div class="science-column-item reveal-up">
-                            <h3>On-Device Intelligence</h3>
-                            <p class="p-small" style="max-width: 100%;">Your family's privacy is paramount. That's why all sensitive data is analyzed locally on XCare's dedicated AI processor. Alerts are only sent when an emergency is detected. No images are ever captured, and no raw health data is stored in the cloud.</p>
-                        </div>
+                    <div class="science-visual reveal-up">
+                        <img src="image/usecase.png" alt="Millimeter-Wave Sensing Animation">
+                    </div>
+                </div>
+                <!-- Row 2: Image Left, Text Right -->
+                <div class="science-grid science-grid-reverse">
+                     <div class="science-visual reveal-up">
+                        <img src="image/screen.jpg" alt="Health Monitor App Interface" style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+                    </div>
+                    <div class="science-text reveal-up">
+                        <h3>On-Device Intelligence</h3>
+                        <p class="p-small" style="max-width: 100%;">Your family's privacy is paramount. That's why all sensitive data is analyzed locally on XCare's dedicated AI processor. Alerts are only sent when an emergency is detected. No images are ever captured, and no raw health data is stored in the cloud.</p>
                     </div>
                 </div>
             </div>
