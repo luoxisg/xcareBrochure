@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -349,14 +349,14 @@
                 grid-column: 2;
             }
         }
-       /* ===== A4 Print Export Styles (3-Page Optimization) ===== */
+       /* ===== A4 Print Export Styles (Final Optimization) ===== */
         @media print {
           /* ---- General Print Reset ---- */
           html, body {
             height: auto !important;
             overflow: visible !important;
             background: #fff !important;
-            font-size: 10pt;
+            font-size: 9.5pt; /* Base font size for print */
             line-height: 1.4;
           }
           body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -364,12 +364,12 @@
           /* ---- Page Setup ---- */
           @page {
             size: A4;
-            margin: 15mm; /* Standard margin */
+            margin: 12mm; /* A bit more margin for better look */
           }
 
           /* ---- Reset Screen-Specific Styles ---- */
           section {
-            padding: 12mm 0 !important; /* Moderate padding */
+            padding: 8mm 0 !important; /* Reduce padding to minimize white space */
             overflow: visible !important;
             margin: 0 !important;
           }
@@ -385,10 +385,11 @@
           }
 
           /* ---- Typography for Print ---- */
-          h1 { font-size: 26pt !important; margin-bottom: 6mm !important; }
-          h2 { font-size: 18pt !important; margin-bottom: 8mm !important; }
-          h3 { font-size: 13pt !important; margin-bottom: 3mm !important; }
-          p, .p-large, .p-small, .value, .param { font-size: 10pt !important; line-height: 1.5 !important; }
+          h1 { font-size: 24pt !important; margin-bottom: 5mm !important; }
+          h2 { font-size: 16pt !important; margin-bottom: 6mm !important; }
+          h3 { font-size: 12pt !important; margin-bottom: 2mm !important; }
+          p, .p-large, .p-small, .value, .param { font-size: 9.5pt !important; line-height: 1.5 !important; }
+          .p-large { max-width: 100%; }
 
           /* ---- Layout Adjustments for Print ---- */
           .container {
@@ -396,38 +397,51 @@
               padding: 0 !important;
           }
 
-          .hero { padding-top: 10mm !important; padding-bottom: 10mm !important; }
+          .hero { padding-top: 5mm !important; padding-bottom: 5mm !important; }
           
-          #product-shot { padding: 5mm 0 10mm 0 !important; }
-          #product-shot img, .science-visual img {
-              border: 1px dashed #999;
-              padding: 4px;
+          /* Control image sizes and add placeholder borders */
+          #product-shot { padding: 5mm 0 !important; }
+          #product-shot img {
+              max-height: 65mm; /* Reduce image height */
+              width: auto;
+              border: 1px dashed #ccc;
+              padding: 2px;
+          }
+          .science-visual img {
+              max-height: 55mm; /* Reduce image height */
+              width: auto;
+              border: 1px dashed #ccc;
+              padding: 2px;
           }
 
           .features-grid {
-              grid-template-columns: 1fr 1fr; /* 2 columns */
-              gap: 8mm 12mm !important;
-              margin-top: 8mm !important;
+              grid-template-columns: 1fr 1fr; /* Force 2 columns */
+              gap: 6mm 10mm !important;
+              margin-top: 6mm !important;
           }
-          .feature-item .icon { font-size: 24pt !important; }
+          .feature-item .icon { font-size: 20pt !important; margin-bottom: 2mm !important; }
 
           .science-grid {
-              gap: 15mm !important;
-              margin-top: 8mm !important;
+              gap: 10mm !important;
+              margin-top: 6mm !important;
+              align-items: center;
           }
           
           .specs-table {
-              margin-top: 8mm !important;
-              gap: 3mm 10mm !important;
+              margin-top: 6mm !important;
+              gap: 2mm 8mm !important;
           }
 
           /* ---- Page Break Control ---- */
-          #science, #specs {
-              page-break-before: always; /* Force page break before these sections */
+          /* Remove all forced breaks and let the browser decide */
+          .page-break-before, #science, #specs {
+              page-break-before: auto !important;
           }
-          h1, h2, h3, h4, .feature-item, .specs-table, #product-shot, .science-grid {
+          /* Prevent elements from breaking internally */
+          h1, h2, h3, h4, .feature-item, .specs-table, #product-shot, .science-grid, .bg-light {
             break-inside: avoid;
           }
+          /* Prevent a break right after a heading */
           h2, h3 {
             break-after: avoid;
           }
@@ -440,12 +454,12 @@
           .print-footer {
               display: block !important;
               text-align: center;
-              margin-top: 10mm;
-              padding-top: 5mm;
+              margin-top: 8mm;
+              padding-top: 4mm;
               border-top: 1px solid #ccc;
               font-size: 9pt;
               color: #333;
-              break-before: auto;
+              break-before: auto; /* Let it flow naturally at the end */
           }
 
           /* ---- Link Handling ---- */
