@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H5 Pro - The Unseen Guardian</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset and Global Styles based on Brand Guidelines */
+        :root {
+            --brand-primary-blue: #27296A;
+            --brand-primary-gold: #BD9B2F;
+            --brand-secondary-gray: #474748;
+            --text-color-primary: #27296A; /* Using primary blue for main text */
+            --text-color-secondary: #474748; /* Using dark gray for secondary text */
+            --bg-color-light: #f5f5f7;
+            --bg-color-white: #ffffff;
+            --accent-color: #BD9B2F; /* Gold for CTAs and highlights */
+            --font-family-brand: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            --transition-speed: 0.5s;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font-family-brand);
+            background-color: var(--bg-color-white);
+            color: var(--text-color-primary);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 22px;
+            box-sizing: border-box;
+        }
+
+        section {
+            padding: 120px 0;
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        section.bg-light {
+             background-color: var(--bg-color-light);
+        }
+
+        h1, h2, h3 {
+            margin: 0;
+            font-weight: 700; /* Bolder for DINPro feel */
+            letter-spacing: -0.005em;
+        }
+
+        h1 {
+            font-size: 56px;
+            margin-bottom: 16px;
+        }
+
+        h2 {
+            font-size: 48px;
+            margin-bottom: 24px;
+        }
+
+        h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: var(--text-color-primary);
+        }
+
+        p {
+            font-size: 21px;
+            color: var(--text-color-secondary);
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
+        }
+        
+        .p-large {
+            font-size: 24px;
+            max-width: 800px;
+            line-height: 1.5;
+        }
+        
+        .p-small {
+            font-size: 17px;
+            line-height: 1.5;
+        }
+
+        /* Animation */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .reveal-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Header Navigation */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            z-index: 100;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .main-nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 52px;
+        }
+        
+        .nav-logo {
+            font-weight: 700;
+            font-size: 20px;
+            text-decoration: none;
+            color: var(--text-color-primary);
+        }
+        
+        .nav-button {
+            background-color: var(--accent-color);
+            color: #fff;
+            text-decoration: none;
+            padding: 6px 16px;
+            border-radius: 980px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        .nav-button:hover {
+            background-color: #a58829; /* Darker gold on hover */
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding-top: 150px; /* Increased padding */
+            padding-bottom: 80px;
+            text-align: center;
+        }
+
+        .hero .brand-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 8px;
+        }
+
+        /* Product Shot Section */
+        #product-shot {
+            padding-top: 0;
+            padding-bottom: 120px;
+            background-color: var(--bg-color-white);
+        }
+        #product-shot img {
+            max-width: 450px; /* Constrain size for a balanced look */
+            width: 100%; /* Responsive within the container */
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 50px;
+            margin-top: 80px;
+        }
+        
+        .feature-item .icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--accent-color); /* Use accent color for icons */
+        }
+
+        /* Science Section */
+        .science-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-top: 80px;
+            text-align: left;
+        }
+        
+        .science-grid img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+        }
+        
+        /* Specs Section */
+        .specs-table {
+            display: grid;
+            grid-template-columns: max-content 1fr;
+            gap: 16px 40px;
+            max-width: 650px;
+            margin: 60px auto 0 auto;
+            text-align: left;
+            font-size: 19px;
+        }
+
+        .specs-table .param {
+            font-weight: 600;
+            color: var(--text-color-primary);
+        }
+
+        .specs-table .value {
+            color: var(--text-color-secondary);
+        }
+        
+        /* Ecosystem Section */
+        .ecosystem-visual {
+            margin-top: 60px;
+        }
+        
+        .ecosystem-visual img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Footer CTA */
+        footer {
+            background-color: var(--brand-primary-blue); /* Use brand blue for footer */
+            color: #fff;
+            padding: 80px 0;
+        }
+
+        footer h2, footer p {
+            color: #fff;
+        }
+        
+        .main-cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #fff;
+            padding: 16px 32px;
+            border-radius: 980px;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .main-cta-button:hover {
+            background-color: #a58829; /* Darker gold on hover */
+        }
+
+        .app-stores {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .app-stores img {
+            height: 40px;
+        }
+        
+        .footer-nav {
+            margin-top: 60px;
+            font-size: 12px;
+            color: #a1a1a6;
+        }
+        
+        .footer-nav a {
+            color: #a1a1a6;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        
+        .footer-nav a:hover {
+            color: #fff;
+        }
+        
+        /* This is the new footer for printing */
+        .print-footer {
+            display: none; /* Hidden by default */
+        }
+
+        /* Responsive Design */
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            h1 { font-size: 44px; }
+            h2 { font-size: 36px; }
+            p { font-size: 19px; }
+            section { padding: 80px 0; }
+            
+            .hero {
+                padding-top: 100px;
+                padding-bottom: 40px;
+            }
+
+            .science-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .science-text, .science-visual {
+                text-align: center;
+            }
+            
+            .science-grid-reverse .science-visual {
+                grid-row: 1; /* Ensure image is first on mobile */
+            }
+            
+            .specs-table {
+                grid-template-columns: 1fr 1.5fr; /* Adjust column ratio for mobile */
+                gap: 12px 15px;
+                font-size: 16px;
+            }
+            .specs-table .param {
+                font-weight: 600;
+                text-align: left;
+            }
+            .specs-table .value {
+                 text-align: left;
+            }
+        }
+        
+        /* PC (Wider Screen) Styles */
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1100px; /* Wider container for PC */
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .science-grid-reverse .science-visual {
+                grid-column: 1;
+            }
+            .science-grid-reverse .science-text {
+                grid-column: 2;
+            }
+        }
+       /* ===== A4 Print Export Styles (2-Page Optimization) ===== */
+        @media print {
+          /* ---- General Print Reset ---- */
+          html, body {
+            height: auto !important;
+            overflow: visible !important;
+            background: #fff !important;
+            font-size: 9pt; /* Base font size for print */
+            line-height: 1.3;
+          }
+          body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+          /* ---- Page Setup ---- */
+          @page {
+            size: A4;
+            margin: 10mm; /* Reduce margin */
+          }
+
+          /* ---- Reset Screen-Specific Styles ---- */
+          section {
+            padding: 8mm 0 !important; /* Drastically reduce padding */
+            overflow: visible !important;
+            margin: 0 !important;
+          }
+          .reveal-up {
+              transform: none !important;
+              opacity: 1 !important;
+              transition: none !important;
+          }
+
+          /* ---- Hide Unnecessary Elements ---- */
+          nav, footer, .cta, .order-btn, .order, .site-footer, .main-nav, .app-stores, .main-cta-button, script {
+              display: none !important;
+          }
+
+          /* ---- Typography for Print ---- */
+          h1 { font-size: 22pt !important; margin-bottom: 4mm !important; }
+          h2 { font-size: 16pt !important; margin-bottom: 5mm !important; }
+          h3 { font-size: 12pt !important; margin-bottom: 2mm !important; }
+          p, .p-large, .p-small, .value, .param { font-size: 9pt !important; line-height: 1.4 !important; }
+
+          /* ---- Layout Adjustments for Print ---- */
+          .container {
+              max-width: 100% !important;
+              padding: 0 !important;
+          }
+
+          .hero { padding-top: 5mm !important; padding-bottom: 5mm !important; }
+
+          #product-shot { padding: 5mm 0 !important; }
+          #product-shot img { max-height: 60mm; width: auto; } /* Control image size */
+
+          #features { padding-top: 5mm !important; }
+          .features-grid {
+              display: grid;
+              grid-template-columns: 1fr 1fr; /* Force 2 columns */
+              gap: 5mm 10mm !important;
+              margin-top: 5mm !important;
+          }
+          .feature-item { text-align: left; }
+          .feature-item .icon { font-size: 18pt !important; margin-bottom: 2mm !important; }
+
+          #science { padding-top: 8mm !important; }
+          .science-grid {
+              gap: 10mm !important;
+              margin-top: 5mm !important;
+              align-items: flex-start;
+          }
+          .science-grid img { max-width: 70mm; }
+
+          #specs { padding-top: 8mm !important; }
+          .specs-table {
+              margin-top: 5mm !important;
+              font-size: 9pt !important;
+              gap: 2mm 8mm !important;
+          }
+
+          #ecosystem { padding-top: 8mm !important; }
+
+          /* ---- Page Break Control ---- */
+          .page-break-before {
+              break-before: auto !important; /* Remove forced page break */
+              page-break-before: auto !important;
+          }
+          h1, h2, h3, h4, .feature-item, .specs-table, #product-shot, .science-grid {
+            break-inside: avoid;
+          }
+          h2, h3 {
+            break-after: avoid;
+          }
+          img {
+              max-width: 100% !important;
+              height: auto !important;
+          }
+
+          /* ---- Show Print-Specific Footer ---- */
+          .print-footer {
+              display: block !important;
+              text-align: center;
+              margin-top: 5mm;
+              padding-top: 3mm;
+              border-top: 1px solid #ccc;
+              font-size: 8pt;
+              color: #333;
+              break-before: auto;
+          }
+
+          /* ---- Link Handling ---- */
+          a[href]:after { content: ""; }
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="container">
+            <a href="#" class="nav-logo">H5 Pro</a>
+            <a href="#footer-cta" class="nav-button">Order Now</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container reveal-up">
+            <div class="brand-name">H5 Pro</div>
+            <h1>The Unseen Guardian.</h1>
+            <p class="p-large">Non-Contact mmWave Vital Signs Radar. Continuously and non-intrusively watch over the well-being of your loved ones.</p>
+        </div>
+    </header>
+    
+    <section id="product-shot">
+        <div class="container reveal-up">
+            <!-- The product image is placed here. -->
+            <img src="image/product.jpg" alt="The H5 Pro device" onerror="this.onerror=null;this.src='https://placehold.co/450x450/f5f5f7/27296A?text=H5+Pro';">
+        </div>
+    </section>
+
+    <main>
+        <section class="bg-light">
+            <div class="container reveal-up">
+                <h2>Preserve their independence.<br>Secure your peace of mind.</h2>
+                <p class="p-large">
+                    The product is designed to be invisible, safeguarding the independence and dignity of your elders. It operates silently in the background, ensuring that help is always on standby when needed. No intrusive cameras, no wearables required. Just life, continuing with freedom and safety.
+                </p>
+            </div>
+        </section>
+
+        <section id="features">
+            <div class="container">
+                <div class="reveal-up">
+                    <h2>Intelligence that Cares.</h2>
+                    <p>The H5 Pro is packed with powerful, thoughtful features designed to provide a complete circle of protection and peace of mind.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-item reveal-up" style="transition-delay: 0.1s;">
+                        <div class="icon">❤️</div>
+                        <h3>Health Monitoring Sensor</h3>
+                        <p class="p-small">Precisely tracks key vitals like heart rate and respiration, providing a clear window into their ongoing health status.</p>
+                    </div>
+                    <div class="feature-item reveal-up" style="transition-delay: 0.2s;">
+                        <div class="icon">🚶</div>
+                        <h3>Presence Detection</h3>
+                        <p class="p-small">Offers non-contact indoor monitoring of position and activity with customizable zones and real-time tracking.</p>
+                    </div>
+                    <div class="feature-item reveal-up" style="transition-delay: 0.3s;">
+                        <div class="icon">📡</div>
+                        <h3>Wi-Fi & 4G Alerts</h3>
+                        <p class="p-small">Ensures that critical alerts are sent reliably, with dual connectivity options that keep you informed, no matter what.</p>
+                    </div>
+                    <div class="feature-item reveal-up" style="transition-delay: 0.4s;">
+                        <div class="icon">🛡️</div>
+                        <h3>Private AI Protection</h3>
+                        <p class="p-small">All sensitive data is processed on the device. Nothing is sent to the cloud, ensuring total privacy and security.</p>
+                    </div>
+                    <div class="feature-item reveal-up" style="transition-delay: 0.5s;">
+                        <div class="icon">🔄</div>
+                        <h3>Automatic Updates</h3>
+                        <p class="p-small">The device software updates automatically, continuously improving with new features and enhanced performance.</p>
+                    </div>
+                    <div class="feature-item reveal-up" style="transition-delay: 0.6s;">
+                        <div class="icon">🎙️</div>
+                        <h3>Voice Intercom</h3>
+                        <p class="p-small">Speak directly through the device. Offer a reassuring word or provide guidance from anywhere, right when it's needed.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="science" class="bg-light">
+            <div class="container">
+                <div class="reveal-up">
+                    <h2>The Science Behind the Serenity.</h2>
+                </div>
+                <!-- Row 1: Text Left, Image Right -->
+                <div class="science-grid">
+                    <div class="science-text reveal-up">
+                        <h3>Seeing the Invisible</h3>
+                        <p class="p-small" style="max-width: 100%;">The device utilizes advanced 60 GHz millimeter-wave technology. Unlike a camera, it perceives the space using safe, low-power radio waves. It can accurately detect the most subtle vital signs, like the rise and fall of a chest or a heartbeat, even through blankets or in complete darkness.</p>
+                    </div>
+                    <div class="science-visual reveal-up">
+                        <img src="image/usecase.png" alt="Millimeter-Wave Sensing Animation">
+                    </div>
+                </div>
+                <!-- Row 2: Image Left, Text Right -->
+                <div class="science-grid science-grid-reverse">
+                     <div class="science-visual reveal-up">
+                        <img src="image/screen.jpg" alt="Health Monitor App Interface" style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+                    </div>
+                    <div class="science-text reveal-up">
+                        <h3>On-Device Intelligence</h3>
+                        <p class="p-small" style="max-width: 100%;">Your family's privacy is paramount. That's why all sensitive data is analyzed locally on the device's dedicated AI processor. Alerts are only sent when an emergency is detected. No images are ever captured, and no raw health data is stored in the cloud.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="specs" class="page-break-before">
+            <div class="container reveal-up">
+                <h2>Meticulously Crafted for the Home and Nursing Home.</h2>
+                <p>Every detail of the device is designed to blend into the home environment, ensuring exceptional performance and simple installation for silent, unobtrusive protection.</p>
+                <div class="specs-table">
+                    <div class="param">Core Technology</div><div class="value">60 GHz Millimeter-Wave Radar</div>
+                    <div class="param">Heart Rate Accuracy</div><div class="value">≤ ±5 bpm</div>
+                    <div class="param">Respiration Accuracy</div><div class="value">≤ ±5 bpm</div>
+                    <div class="param">Effective Detection Range</div><div class="value">0.5m – 1.5m</div>
+                    <div class="param">Horizontal Coverage</div><div class="value">Approx. 1.2 m (standard bed width)</div>
+                    <div class="param">Installation</div><div class="value">Ceiling Mount (Recommended)</div>
+                    <div class="param">Recommended Height</div><div class="value">2.3m – 3.3m</div>
+                    <div class="param">Connectivity</div><div class="value">Wi-Fi / 4G (Optional)</div>
+                    <div class="param">Power Input</div><div class="value">DC 5V / 2A (Adapter included)</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ecosystem">
+            <div class="container reveal-up">
+                <h2>A Complete Circle of Care.</h2>
+                <p>The system is more than a device; it's a connected ecosystem. You can view real-time vital signs and historical trends through the App. When the system detects an anomaly, you receive immediate alerts via the app, SMS, or a phone call. Plus, with two-way voice intercom, you can speak directly through the device to offer comfort or instructions. True peace of mind, right at your fingertips.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer id="footer-cta">
+        <div class="container reveal-up">
+            <h2>Bring Peace of Mind, from Home to Nursing Home</h2>
+            <p>Ready to add a layer of unseen protection for your beloved family?</p>
+            <a href="mailto:enquiry@xjeralabs.com" class="main-cta-button">Email Us: enquiry@xjeralabs.com</a>
+            <div class="app-stores">
+                <a href="#"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store"></a>
+                <a href="#"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play"></a>
+            </div>
+            <div class="footer-nav">
+                <a href="#">Support</a> |
+                <a href="#">Privacy Policy</a> |
+                <a href="mailto:enquiry@xjeralabs.com">Contact Us</a>
+                 <p style="font-size: 12px; color: #a1a1a6; margin-top: 24px;">© 2025 Xjeralabs PTE LTD . All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- New footer specifically for printing -->
+    <div class="print-footer">
+        <p>Contact Us: enquiry@xjeralabs.com</p>
+        <p>© 2025 Xjeralabs PTE LTD . All rights reserved.</p>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Reveal elements on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.reveal-up').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    // Check if the link is just a placeholder
+                    if(this.getAttribute('href') === '#') {
+                        return;
+                    }
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
