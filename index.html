@@ -390,15 +390,15 @@
 
           /* ---- Reset Screen-Specific Styles ---- */
           section {
-            padding: 4mm 0 !important; /* Reduce padding to minimize white space */
+            padding: 5mm 0 !important; /* Reduce padding to minimize white space */
             overflow: visible !important;
             margin: 0 !important;
             box-shadow: none !important;
           }
           #science {
-            padding-top: 15mm !important; /* Increased top padding */
-            padding-bottom: 15mm !important; /* Increased bottom padding */
-            page-break-after: always; /* Force page break after this section */
+            padding-top: 8mm !important; 
+            padding-bottom: 8mm !important;
+            page-break-after: auto; /* Let browser decide on page break */
           }
           .reveal-up {
               transform: none !important;
@@ -415,7 +415,7 @@
           h1 { font-size: 24pt !important; margin-bottom: 5mm !important; }
           h2 { font-size: 16pt !important; margin-bottom: 4mm !important; }
           #science h2 {
-              margin-bottom: 12mm !important; /* More space below the main section title */
+              margin-bottom: 8mm !important; /* Reduced space below the main section title */
           }
           h3 { font-size: 12pt !important; margin-bottom: 3mm !important; }
           p, .p-large, .p-small, .value, .param { font-size: 9.5pt !important; line-height: 1.5 !important; }
@@ -472,10 +472,10 @@
               border-radius: 0 !important;
           }
           .science-grid h3 {
-              margin-bottom: 5mm !important; /* Add more space below subheadings */
+              margin-bottom: 3mm !important; /* Reduced space below subheadings */
           }
           .science-grid-reverse .science-text {
-              margin-top: 12mm !important; /* Add space above the text block to move it down */
+              margin-top: 0 !important; /* Removed extra space */
           }
           
           .specs-table {
@@ -484,7 +484,6 @@
           }
 
           /* ---- Page Break Control ---- */
-          /* Remove all forced breaks and let the browser decide */
           .page-break-before, #specs {
               page-break-before: auto !important;
           }
