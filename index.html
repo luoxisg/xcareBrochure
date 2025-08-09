@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XCare H5 Pro - The Unseen Guardian</title>
+    <title>H5 Pro - The Unseen Guardian</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -349,48 +349,94 @@
                 grid-column: 2;
             }
         }
-       /* ===== A4 无痛导出样式 ===== */
+       /* ===== A4 Print Export Styles ===== */
         @media print {
-          /* ---- Compact print layout tweaks ---- */
-          section { padding: 28px 0 !important; }
-          .hero { padding-top: 40px !important; padding-bottom: 20px !important; }
-          .section { margin-bottom: 6mm !important; }
-          h1 { font-size: 34px !important; }
-          h2 { font-size: 26px !important; margin-bottom: 10px !important; }
-          h3 { font-size: 18px !important; margin-bottom: 6px !important; }
-          p, .p-large, .p-small { font-size: 12pt !important; line-height: 1.45 !important; }
-          .features-grid { gap: 24px !important; }
-          .science-grid { gap: 24px !important; }
-          .specs-table { margin-top: 24px !important; font-size: 11pt !important; }
-
-          @page { size: A4; margin: 12mm; }
-          html, body { height: auto !important; }
+          /* ---- General Print Reset ---- */
+          html, body { 
+            height: auto !important; 
+            overflow: visible !important; /* Ensure content is not clipped */
+            background: #fff !important; /* Force white background */
+          }
           body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
           
-          /* Hide elements not needed for print */
-          nav, footer, .cta, .order-btn, .order, .site-footer, .main-nav, .app-stores, .main-cta-button { 
+          /* ---- Page Setup ---- */
+          @page { 
+            size: A4; 
+            margin: 12mm; 
+          }
+
+          /* ---- Reset Screen-Specific Styles ---- */
+          section { 
+            padding: 20px 0 !important; /* Reduced padding for print */
+            overflow: visible !important; /* Prevent overflow from cutting content */
+            margin: 0 !important;
+          }
+          .reveal-up {
+              transform: none !important;
+              opacity: 1 !important;
+              transition: none !important;
+          }
+
+          /* ---- Hide Unnecessary Elements ---- */
+          nav, footer, .cta, .order-btn, .order, .site-footer, .main-nav, .app-stores, .main-cta-button, script { 
               display: none !important; 
           }
-          
-          /* Show the dedicated print footer */
+
+          /* ---- Typography for Print ---- */
+          h1 { font-size: 28pt !important; }
+          h2 { font-size: 20pt !important; margin-bottom: 8mm !important; }
+          h3 { font-size: 14pt !important; margin-bottom: 4mm !important; }
+          p, .p-large, .p-small, .value, .param { font-size: 11pt !important; line-height: 1.5 !important; }
+
+          /* ---- Layout Adjustments for Print ---- */
+          .hero { padding-top: 20px !important; padding-bottom: 10px !important; }
+          .features-grid { gap: 20px !important; margin-top: 10mm !important; }
+          .science-grid { gap: 20px !important; margin-top: 10mm !important; }
+          .specs-table { margin-top: 10mm !important; font-size: 11pt !important; gap: 4px 20px !important; }
+          #product-shot img { max-height: 8cm; width: auto; } /* Control image size */
+
+          /* ---- Page Break Control ---- */
+          /* Avoid breaking inside these elements */
+          h1, h2, h3, h4, p, ul, ol, .feature-item, .specs-table { 
+            break-inside: avoid; 
+          }
+          /* Avoid breaking right after a heading */
+          h1, h2, h3 { 
+            break-after: avoid; 
+          }
+          /* Force a break before this element */
+          .page-break-before { 
+            break-before: page; 
+            page-break-before: always; 
+          }
+           .page-break-after  { 
+            break-after:  page; 
+            page-break-after:  always; 
+          }
+          /* Allow breaks inside large containers */
+          section, main {
+              page-break-inside: auto;
+              break-inside: auto;
+          }
+          img {
+              max-width: 100% !important;
+              height: auto !important;
+          }
+
+          /* ---- Show Print-Specific Footer ---- */
           .print-footer {
               display: block !important;
               text-align: center;
-              margin-top: 20px;
-              padding-top: 10px;
+              margin-top: 10mm;
+              padding-top: 5mm;
               border-top: 1px solid #ccc;
               font-size: 10pt;
               color: #333;
+              break-before: auto; /* Avoid forcing a new page just for the footer */
           }
 
-          h1, h2, h3, h4, p, ul, ol { break-inside: avoid; }
-          h1, h2, h3 { break-after: avoid; margin-top: 0.2em; }
-          img, figure, .card, .feature, .spec, .section { page-break-inside: avoid; break-inside: avoid; }
-          img { max-width: 100% !important; height: auto !important; }
+          /* ---- Link Handling ---- */
           a[href]:after { content: ""; }
-          .section { margin-bottom: 10mm; }
-          .page-break-before { break-before: page; page-break-before: always; }
-          .page-break-after  { break-after:  page; page-break-after:  always; }
         }
 
     </style>
@@ -398,14 +444,14 @@
 <body>
     <nav class="main-nav">
         <div class="container">
-            <a href="#" class="nav-logo">XCare</a>
+            <a href="#" class="nav-logo">H5 Pro</a>
             <a href="#footer-cta" class="nav-button">Order Now</a>
         </div>
     </nav>
 
     <header class="hero">
         <div class="container reveal-up">
-            <div class="brand-name">XCare H5 Pro</div>
+            <div class="brand-name">H5 Pro</div>
             <h1>The Unseen Guardian.</h1>
             <p class="p-large">Non-Contact mmWave Vital Signs Radar. Continuously and non-intrusively watch over the well-being of your loved ones.</p>
         </div>
@@ -414,7 +460,7 @@
     <section id="product-shot">
         <div class="container reveal-up">
             <!-- The product image is placed here. -->
-            <img src="image/product.jpg" alt="The XCare H5 Pro device" onerror="this.onerror=null;this.src='https://placehold.co/450x450/f5f5f7/27296A?text=XCare+H5+Pro';">
+            <img src="image/product.jpg" alt="The H5 Pro device" onerror="this.onerror=null;this.src='https://placehold.co/450x450/f5f5f7/27296A?text=H5+Pro';">
         </div>
     </section>
 
@@ -423,7 +469,7 @@
             <div class="container reveal-up">
                 <h2>Preserve their independence.<br>Secure your peace of mind.</h2>
                 <p class="p-large">
-                    XCare is designed to be invisible, safeguarding the independence and dignity of your elders. It operates silently in the background, ensuring that help is always on standby when needed. No intrusive cameras, no wearables required. Just life, continuing with freedom and safety.
+                    The product is designed to be invisible, safeguarding the independence and dignity of your elders. It operates silently in the background, ensuring that help is always on standby when needed. No intrusive cameras, no wearables required. Just life, continuing with freedom and safety.
                 </p>
             </div>
         </section>
@@ -432,7 +478,7 @@
             <div class="container">
                 <div class="reveal-up">
                     <h2>Intelligence that Cares.</h2>
-                    <p>The XCare H5 Pro is packed with powerful, thoughtful features designed to provide a complete circle of protection and peace of mind.</p>
+                    <p>The H5 Pro is packed with powerful, thoughtful features designed to provide a complete circle of protection and peace of mind.</p>
                 </div>
                 <div class="features-grid">
                     <div class="feature-item reveal-up" style="transition-delay: 0.1s;">
@@ -478,7 +524,7 @@
                 <div class="science-grid">
                     <div class="science-text reveal-up">
                         <h3>Seeing the Invisible</h3>
-                        <p class="p-small" style="max-width: 100%;">XCare utilizes advanced 60 GHz millimeter-wave technology. Unlike a camera, it perceives the space using safe, low-power radio waves. It can accurately detect the most subtle vital signs, like the rise and fall of a chest or a heartbeat, even through blankets or in complete darkness.</p>
+                        <p class="p-small" style="max-width: 100%;">The device utilizes advanced 60 GHz millimeter-wave technology. Unlike a camera, it perceives the space using safe, low-power radio waves. It can accurately detect the most subtle vital signs, like the rise and fall of a chest or a heartbeat, even through blankets or in complete darkness.</p>
                     </div>
                     <div class="science-visual reveal-up">
                         <img src="image/usecase.png" alt="Millimeter-Wave Sensing Animation">
@@ -491,7 +537,7 @@
                     </div>
                     <div class="science-text reveal-up">
                         <h3>On-Device Intelligence</h3>
-                        <p class="p-small" style="max-width: 100%;">Your family's privacy is paramount. That's why all sensitive data is analyzed locally on XCare's dedicated AI processor. Alerts are only sent when an emergency is detected. No images are ever captured, and no raw health data is stored in the cloud.</p>
+                        <p class="p-small" style="max-width: 100%;">Your family's privacy is paramount. That's why all sensitive data is analyzed locally on the device's dedicated AI processor. Alerts are only sent when an emergency is detected. No images are ever captured, and no raw health data is stored in the cloud.</p>
                     </div>
                 </div>
             </div>
@@ -500,7 +546,7 @@
         <section id="specs" class="page-break-before">
             <div class="container reveal-up">
                 <h2>Meticulously Crafted for the Home and Nursing Home.</h2>
-                <p>Every detail of XCare is designed to blend into the home environment, ensuring exceptional performance and simple installation for silent, unobtrusive protection.</p>
+                <p>Every detail of the device is designed to blend into the home environment, ensuring exceptional performance and simple installation for silent, unobtrusive protection.</p>
                 <div class="specs-table">
                     <div class="param">Core Technology</div><div class="value">60 GHz Millimeter-Wave Radar</div>
                     <div class="param">Heart Rate Accuracy</div><div class="value">≤ ±5 bpm</div>
@@ -518,7 +564,7 @@
         <section id="ecosystem">
             <div class="container reveal-up">
                 <h2>A Complete Circle of Care.</h2>
-                <p>XCare is more than a device; it's a connected ecosystem. You can view real-time vital signs and historical trends through the XCare App. When the system detects an anomaly, you receive immediate alerts via the app, SMS, or a phone call. Plus, with two-way voice intercom, you can speak directly through the device to offer comfort or instructions. True peace of mind, right at your fingertips.</p>
+                <p>The system is more than a device; it's a connected ecosystem. You can view real-time vital signs and historical trends through the App. When the system detects an anomaly, you receive immediate alerts via the app, SMS, or a phone call. Plus, with two-way voice intercom, you can speak directly through the device to offer comfort or instructions. True peace of mind, right at your fingertips.</p>
             </div>
         </section>
     </main>
