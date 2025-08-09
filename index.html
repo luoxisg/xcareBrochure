@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H5 Pro - The Unseen Guardian</title>
+    <title>XCare H5 Pro - The Unseen Guardian</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -349,27 +349,27 @@
                 grid-column: 2;
             }
         }
-       /* ===== A4 Print Export Styles (2-Page Optimization) ===== */
+       /* ===== A4 Print Export Styles (3-Page Optimization) ===== */
         @media print {
           /* ---- General Print Reset ---- */
           html, body {
             height: auto !important;
             overflow: visible !important;
             background: #fff !important;
-            font-size: 9pt; /* Base font size for print */
-            line-height: 1.3;
+            font-size: 10pt;
+            line-height: 1.4;
           }
           body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 
           /* ---- Page Setup ---- */
           @page {
             size: A4;
-            margin: 10mm; /* Reduce margin */
+            margin: 15mm; /* Standard margin */
           }
 
           /* ---- Reset Screen-Specific Styles ---- */
           section {
-            padding: 8mm 0 !important; /* Drastically reduce padding */
+            padding: 12mm 0 !important; /* Moderate padding */
             overflow: visible !important;
             margin: 0 !important;
           }
@@ -385,10 +385,10 @@
           }
 
           /* ---- Typography for Print ---- */
-          h1 { font-size: 22pt !important; margin-bottom: 4mm !important; }
-          h2 { font-size: 16pt !important; margin-bottom: 5mm !important; }
-          h3 { font-size: 12pt !important; margin-bottom: 2mm !important; }
-          p, .p-large, .p-small, .value, .param { font-size: 9pt !important; line-height: 1.4 !important; }
+          h1 { font-size: 26pt !important; margin-bottom: 6mm !important; }
+          h2 { font-size: 18pt !important; margin-bottom: 8mm !important; }
+          h3 { font-size: 13pt !important; margin-bottom: 3mm !important; }
+          p, .p-large, .p-small, .value, .param { font-size: 10pt !important; line-height: 1.5 !important; }
 
           /* ---- Layout Adjustments for Print ---- */
           .container {
@@ -396,42 +396,34 @@
               padding: 0 !important;
           }
 
-          .hero { padding-top: 5mm !important; padding-bottom: 5mm !important; }
+          .hero { padding-top: 10mm !important; padding-bottom: 10mm !important; }
+          
+          #product-shot { padding: 5mm 0 10mm 0 !important; }
+          #product-shot img, .science-visual img {
+              border: 1px dashed #999;
+              padding: 4px;
+          }
 
-          #product-shot { padding: 5mm 0 !important; }
-          #product-shot img { max-height: 60mm; width: auto; } /* Control image size */
-
-          #features { padding-top: 5mm !important; }
           .features-grid {
-              display: grid;
-              grid-template-columns: 1fr 1fr; /* Force 2 columns */
-              gap: 5mm 10mm !important;
-              margin-top: 5mm !important;
+              grid-template-columns: 1fr 1fr; /* 2 columns */
+              gap: 8mm 12mm !important;
+              margin-top: 8mm !important;
           }
-          .feature-item { text-align: left; }
-          .feature-item .icon { font-size: 18pt !important; margin-bottom: 2mm !important; }
+          .feature-item .icon { font-size: 24pt !important; }
 
-          #science { padding-top: 8mm !important; }
           .science-grid {
-              gap: 10mm !important;
-              margin-top: 5mm !important;
-              align-items: flex-start;
+              gap: 15mm !important;
+              margin-top: 8mm !important;
           }
-          .science-grid img { max-width: 70mm; }
-
-          #specs { padding-top: 8mm !important; }
+          
           .specs-table {
-              margin-top: 5mm !important;
-              font-size: 9pt !important;
-              gap: 2mm 8mm !important;
+              margin-top: 8mm !important;
+              gap: 3mm 10mm !important;
           }
-
-          #ecosystem { padding-top: 8mm !important; }
 
           /* ---- Page Break Control ---- */
-          .page-break-before {
-              break-before: auto !important; /* Remove forced page break */
-              page-break-before: auto !important;
+          #science, #specs {
+              page-break-before: always; /* Force page break before these sections */
           }
           h1, h2, h3, h4, .feature-item, .specs-table, #product-shot, .science-grid {
             break-inside: avoid;
@@ -448,10 +440,10 @@
           .print-footer {
               display: block !important;
               text-align: center;
-              margin-top: 5mm;
-              padding-top: 3mm;
+              margin-top: 10mm;
+              padding-top: 5mm;
               border-top: 1px solid #ccc;
-              font-size: 8pt;
+              font-size: 9pt;
               color: #333;
               break-before: auto;
           }
@@ -465,14 +457,14 @@
 <body>
     <nav class="main-nav">
         <div class="container">
-            <a href="#" class="nav-logo">H5 Pro</a>
+            <a href="#" class="nav-logo">XCare</a>
             <a href="#footer-cta" class="nav-button">Order Now</a>
         </div>
     </nav>
 
     <header class="hero">
         <div class="container reveal-up">
-            <div class="brand-name">H5 Pro</div>
+            <div class="brand-name">XCare H5 Pro</div>
             <h1>The Unseen Guardian.</h1>
             <p class="p-large">Non-Contact mmWave Vital Signs Radar. Continuously and non-intrusively watch over the well-being of your loved ones.</p>
         </div>
@@ -481,7 +473,7 @@
     <section id="product-shot">
         <div class="container reveal-up">
             <!-- The product image is placed here. -->
-            <img src="image/product.jpg" alt="The H5 Pro device" onerror="this.onerror=null;this.src='https://placehold.co/450x450/f5f5f7/27296A?text=H5+Pro';">
+            <img src="image/product.jpg" alt="The XCare H5 Pro device" onerror="this.onerror=null;this.src='https://placehold.co/450x450/f5f5f7/27296A?text=XCare+H5+Pro';">
         </div>
     </section>
 
@@ -490,7 +482,7 @@
             <div class="container reveal-up">
                 <h2>Preserve their independence.<br>Secure your peace of mind.</h2>
                 <p class="p-large">
-                    The product is designed to be invisible, safeguarding the independence and dignity of your elders. It operates silently in the background, ensuring that help is always on standby when needed. No intrusive cameras, no wearables required. Just life, continuing with freedom and safety.
+                    XCare is designed to be invisible, safeguarding the independence and dignity of your elders. It operates silently in the background, ensuring that help is always on standby when needed. No intrusive cameras, no wearables required. Just life, continuing with freedom and safety.
                 </p>
             </div>
         </section>
@@ -499,7 +491,7 @@
             <div class="container">
                 <div class="reveal-up">
                     <h2>Intelligence that Cares.</h2>
-                    <p>The H5 Pro is packed with powerful, thoughtful features designed to provide a complete circle of protection and peace of mind.</p>
+                    <p>The XCare H5 Pro is packed with powerful, thoughtful features designed to provide a complete circle of protection and peace of mind.</p>
                 </div>
                 <div class="features-grid">
                     <div class="feature-item reveal-up" style="transition-delay: 0.1s;">
@@ -545,20 +537,20 @@
                 <div class="science-grid">
                     <div class="science-text reveal-up">
                         <h3>Seeing the Invisible</h3>
-                        <p class="p-small" style="max-width: 100%;">The device utilizes advanced 60 GHz millimeter-wave technology. Unlike a camera, it perceives the space using safe, low-power radio waves. It can accurately detect the most subtle vital signs, like the rise and fall of a chest or a heartbeat, even through blankets or in complete darkness.</p>
+                        <p class="p-small" style="max-width: 100%;">XCare utilizes advanced 60 GHz millimeter-wave technology. Unlike a camera, it perceives the space using safe, low-power radio waves. It can accurately detect the most subtle vital signs, like the rise and fall of a chest or a heartbeat, even through blankets or in complete darkness.</p>
                     </div>
                     <div class="science-visual reveal-up">
-                        <img src="image/usecase.png" alt="Millimeter-Wave Sensing Animation">
+                        <img src="image/usecase.png" alt="Millimeter-Wave Sensing Animation" onerror="this.onerror=null;this.src='https://placehold.co/400x300/e0e0e0/999?text=Usecase+Visual';">
                     </div>
                 </div>
                 <!-- Row 2: Image Left, Text Right -->
                 <div class="science-grid science-grid-reverse">
                      <div class="science-visual reveal-up">
-                        <img src="image/screen.jpg" alt="Health Monitor App Interface" style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+                        <img src="image/screen.jpg" alt="Health Monitor App Interface" style="max-width: 70%; height: auto; display: block; margin: 0 auto;" onerror="this.onerror=null;this.src='https://placehold.co/300x500/e0e0e0/999?text=App+Screen';">
                     </div>
                     <div class="science-text reveal-up">
                         <h3>On-Device Intelligence</h3>
-                        <p class="p-small" style="max-width: 100%;">Your family's privacy is paramount. That's why all sensitive data is analyzed locally on the device's dedicated AI processor. Alerts are only sent when an emergency is detected. No images are ever captured, and no raw health data is stored in the cloud.</p>
+                        <p class="p-small" style="max-width: 100%;">Your family's privacy is paramount. That's why all sensitive data is analyzed locally on XCare's dedicated AI processor. Alerts are only sent when an emergency is detected. No images are ever captured, and no raw health data is stored in the cloud.</p>
                     </div>
                 </div>
             </div>
@@ -567,7 +559,7 @@
         <section id="specs" class="page-break-before">
             <div class="container reveal-up">
                 <h2>Meticulously Crafted for the Home and Nursing Home.</h2>
-                <p>Every detail of the device is designed to blend into the home environment, ensuring exceptional performance and simple installation for silent, unobtrusive protection.</p>
+                <p>Every detail of XCare is designed to blend into the home environment, ensuring exceptional performance and simple installation for silent, unobtrusive protection.</p>
                 <div class="specs-table">
                     <div class="param">Core Technology</div><div class="value">60 GHz Millimeter-Wave Radar</div>
                     <div class="param">Heart Rate Accuracy</div><div class="value">≤ ±5 bpm</div>
@@ -585,7 +577,7 @@
         <section id="ecosystem">
             <div class="container reveal-up">
                 <h2>A Complete Circle of Care.</h2>
-                <p>The system is more than a device; it's a connected ecosystem. You can view real-time vital signs and historical trends through the App. When the system detects an anomaly, you receive immediate alerts via the app, SMS, or a phone call. Plus, with two-way voice intercom, you can speak directly through the device to offer comfort or instructions. True peace of mind, right at your fingertips.</p>
+                <p>XCare is more than a device; it's a connected ecosystem. You can view real-time vital signs and historical trends through the XCare App. When the system detects an anomaly, you receive immediate alerts via the app, SMS, or a phone call. Plus, with two-way voice intercom, you can speak directly through the device to offer comfort or instructions. True peace of mind, right at your fingertips.</p>
             </div>
         </section>
     </main>
