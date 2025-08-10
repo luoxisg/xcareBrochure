@@ -477,25 +477,36 @@
               background-color: transparent !important;
           }
           .feature-item .icon { font-size: 18pt !important; margin-bottom: 2mm !important; }
+          
+          /* ---- MODIFIED: Science Section Layout for Print ---- */
           .science-main-grid {
-              display: block !important; /* Change to block for simplicity */
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: center;
+              gap: 0 10mm; /* Row gap 0, column gap 10mm */
           }
-          .science-grid {
-              display: block !important;
-              margin-top: 5mm !important;
-              gap: 0 !important;
+          .science-grid, .science-grid-reverse {
+              display: contents; /* Makes children direct flex items of science-main-grid */
+          }
+          .science-text {
+              flex-basis: 100%; /* Each text block takes full width */
+              order: 1; /* All text blocks appear first */
+              margin-bottom: 4mm;
           }
           .science-visual {
-              text-align: center; /* Center images */
+              flex: 1; /* The two visual blocks share the space */
+              order: 2; /* Visual blocks appear after text blocks */
+              text-align: center;
           }
-           .science-visual img {
+          .science-visual img {
               max-height: 55mm !important;
-              width: auto;
-              display: block;
-              margin: 3mm auto 0 auto;
+              width: auto !important;
+              display: inline-block;
               box-shadow: none !important;
               border-radius: 0 !important;
+              margin: 0;
           }
+
           .specs-table {
               margin-top: 5mm !important;
               gap: 2mm 8mm !important;
@@ -577,10 +588,36 @@
         .print-simulation .features-grid { grid-template-columns: 1fr 1fr; gap: 5mm 8mm !important; margin-top: 4mm !important; }
         .print-simulation .feature-item { box-shadow: none !important; padding: 0 !important; border-radius: 0 !important; text-align: left; background-color: transparent !important; }
         .print-simulation .feature-item .icon { font-size: 18pt !important; margin-bottom: 2mm !important; }
-        .print-simulation .science-main-grid { display: block !important; }
-        .print-simulation .science-grid { display: block !important; margin-top: 5mm !important; gap: 0 !important; }
-        .print-simulation .science-visual { text-align: center; }
-        .print-simulation .science-visual img { max-height: 55mm !important; width: auto; display: block; margin: 3mm auto 0 auto; box-shadow: none !important; border-radius: 0 !important; }
+        
+        /* ---- MODIFIED: Science Section Layout for Print Simulation ---- */
+        .print-simulation .science-main-grid {
+            display: flex !important;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0 10mm;
+        }
+        .print-simulation .science-grid, .print-simulation .science-grid-reverse {
+            display: contents !important;
+        }
+        .print-simulation .science-text {
+            flex-basis: 100%;
+            order: 1;
+            margin-bottom: 4mm;
+        }
+        .print-simulation .science-visual {
+            flex: 1;
+            order: 2;
+            text-align: center;
+        }
+        .print-simulation .science-visual img {
+            max-height: 55mm !important;
+            width: auto !important;
+            display: inline-block;
+            box-shadow: none !important;
+            border-radius: 0 !important;
+            margin: 0;
+        }
+
         .print-simulation .specs-table { margin-top: 5mm !important; gap: 2mm 8mm !important; }
         .print-simulation h1, .print-simulation h2, .print-simulation h3, .print-simulation h4, .print-simulation .feature-item, .print-simulation .specs-table, .print-simulation #product-shot, .print-simulation .science-grid { break-inside: avoid; }
         .print-simulation h2, .print-simulation h3 { break-after: avoid; }
