@@ -130,7 +130,7 @@
             color: var(--text-color-primary);
         }
         
-        /* MODIFIED: Styles for the action buttons container */
+        /* Styles for the action buttons container */
         .nav-actions {
             display: flex;
             align-items: center;
@@ -147,6 +147,7 @@
             border: none;
             cursor: pointer;
             transition: background-color 0.3s;
+            white-space: nowrap;
         }
 
         .nav-button {
@@ -330,17 +331,45 @@
             display: none; /* Hidden by default */
         }
 
+        /* Styles for the fixed Exit Preview button */
+        #exit-preview-btn-fixed {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            padding: 8px 16px;
+            background-color: var(--brand-primary-gold);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: var(--font-family-brand);
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
         /* Responsive Design */
         /* Mobile Styles */
         @media (max-width: 768px) {
-            h1 { font-size: 44px; }
-            h2 { font-size: 36px; }
-            p { font-size: 19px; }
+            .container {
+                padding: 0 15px;
+            }
+            h1 { font-size: 38px; }
+            h2 { font-size: 32px; }
+            p { font-size: 18px; }
             section { padding: 64px 0; }
             
             .hero {
                 padding-top: 100px;
                 padding-bottom: 40px;
+            }
+            
+            .nav-actions {
+                gap: 8px;
+            }
+            .nav-button, .nav-actions button {
+                padding: 5px 12px;
+                font-size: 12px;
             }
 
             .science-grid {
@@ -357,7 +386,7 @@
             }
             
             .specs-table {
-                grid-template-columns: 1fr 1.5fr;
+                grid-template-columns: 1fr 1.5fr; /* Adjust column ratio for mobile */
                 gap: 12px 15px;
                 font-size: 16px;
             }
@@ -367,6 +396,9 @@
             }
             .specs-table .value {
                  text-align: left;
+            }
+            .feature-item {
+                padding: 24px;
             }
         }
         
@@ -391,24 +423,6 @@
                 grid-column: 2;
             }
         }
-
-        /* ===== NEW: Styles for the fixed Exit Preview button ===== */
-        #exit-preview-btn-fixed {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 9999;
-            padding: 8px 16px;
-            background-color: var(--brand-primary-gold);
-            color: white;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            font-family: var(--font-family-brand);
-            font-weight: 500;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-        }
-
 
        /* ===== A4 Print Export Styles (For actual printing) ===== */
         @media print {
@@ -622,7 +636,7 @@
     </style>
 </head>
 <body>
-    <!-- NEW: This button is only for exiting the preview -->
+    <!-- This button is only for exiting the preview -->
     <button id="exit-preview-btn-fixed" style="display: none;">Exit Preview</button>
 
     <!-- Wrapper for page content, used in simulation -->
@@ -632,7 +646,7 @@
         <nav class="main-nav">
             <div class="container">
                 <a href="#" class="nav-logo">XCare</a>
-                <!-- MODIFIED: Container for all action buttons -->
+                <!-- Container for all action buttons -->
                 <div class="nav-actions">
                     <a href="#footer-cta" class="nav-button">Order Now</a>
                     <button id="simulate-print-btn">Simulate PDF Print</button>
