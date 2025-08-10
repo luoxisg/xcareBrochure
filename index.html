@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -448,7 +448,7 @@
           }
           /* ---- Reset Screen-Specific Styles ---- */
           section {
-            padding: 4mm 0 !important; /* Drastically reduce padding to minimize whitespace */
+            padding: 2mm 0 !important; /* Drastically reduce padding to minimize whitespace */
             overflow: visible !important;
             margin: 0 !important;
             box-shadow: none !important;
@@ -469,9 +469,9 @@
             color: #000 !important; /* Set all text to black */
             text-align: left; /* Left-align all text */
           }
-          h1 { font-size: 22pt !important; margin-bottom: 5mm !important; }
-          h2 { font-size: 16pt !important; margin-bottom: 4mm !important; }
-          h3 { font-size: 12pt !important; margin-bottom: 2mm !important; }
+          h1 { font-size: 22pt !important; margin-bottom: 4mm !important; }
+          h2 { font-size: 16pt !important; margin-bottom: 3mm !important; }
+          h3 { font-size: 12pt !important; margin-bottom: 1.5mm !important; }
           p, .p-large, .p-small, .value, .param { 
             font-size: 9.5pt !important; 
             line-height: 1.4 !important; 
@@ -482,17 +482,17 @@
               max-width: 100% !important;
               padding: 0 !important;
           }
-          .hero { padding: 5mm 0 !important; }
-          #product-shot { padding: 5mm 0 !important; text-align: center; }
+          .hero { padding: 2mm 0 !important; }
+          #product-shot { padding: 3mm 0 !important; text-align: center; }
           #product-shot img {
-              max-height: 60mm; /* Constrain image height */
+              max-height: 55mm; /* Constrain image height */
               width: auto;
               margin: 0 auto;
           }
           .features-grid {
               grid-template-columns: 1fr 1fr; /* Force two columns */
-              gap: 5mm 8mm !important;
-              margin-top: 4mm !important;
+              gap: 4mm 6mm !important;
+              margin-top: 3mm !important;
           }
           .feature-item {
               box-shadow: none !important;
@@ -501,12 +501,12 @@
               text-align: left;
               background-color: transparent !important;
           }
-          .feature-item .icon { font-size: 18pt !important; margin-bottom: 2mm !important; }
+          .feature-item .icon { font-size: 18pt !important; margin-bottom: 1.5mm !important; }
           
           /* ---- MODIFIED: Science Section Layout for Print ---- */
           .science-main-grid {
               display: flex !important;
-              gap: 10mm;
+              gap: 8mm;
               align-items: flex-start;
           }
           .science-grid, .science-grid-reverse {
@@ -521,17 +521,17 @@
               max-width: 100% !important;
               height: auto !important;
               display: block;
-              margin-top: 4mm;
+              margin-top: 3mm;
               box-shadow: none !important;
               border-radius: 0 !important;
           }
 
           .specs-table {
-              margin-top: 5mm !important;
-              gap: 2mm 8mm !important;
+              margin-top: 4mm !important;
+              gap: 1.5mm 6mm !important;
           }
           /* ---- Page Break Control ---- */
-          h1, h2, h3, h4, .feature-item, .specs-table, #product-shot, .science-grid {
+          section, .feature-item, .science-grid, .specs-table {
             break-inside: avoid;
           }
           h2, h3 {
@@ -545,12 +545,11 @@
           .print-footer {
               display: block !important;
               text-align: center;
-              margin-top: 8mm;
-              padding-top: 4mm;
+              margin-top: 5mm;
+              padding-top: 3mm;
               border-top: 1px solid #ccc;
               font-size: 8pt;
               color: #555;
-              break-before: auto;
           }
           /* ---- Link Handling ---- */
           a[href]:after { content: ""; } /* Do not display link URL */
@@ -558,28 +557,34 @@
 
         /* ===== PDF Print Simulation Styles ===== */
         .print-simulation {
-            background: #525659 !important; /* Add a dark backdrop for the "paper" */
+            background: #525659 !important;
             -webkit-font-smoothing: auto;
             -moz-osx-font-smoothing: auto;
+            padding: 20px 0;
+        }
+        .print-simulation #page-content {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
         }
         .print-simulation .main-nav,
         .print-simulation footer {
             display: none !important;
         }
-        .print-simulation #page-wrapper {
-            max-width: 210mm;
-            min-height: 297mm;
-            margin: 20px auto;
-            padding: 10mm;
-            box-sizing: border-box;
-            background: white;
-            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+        .print-simulation #page-content > * {
+            /* Apply print styles to the content inside the simulated page */
+            padding-top: 2mm !important; 
+            padding-bottom: 2mm !important;
+            overflow: visible !important;
+            margin: 0 !important;
+            box-shadow: none !important;
+            border-radius: 0 !important;
+            background-color: transparent !important;
         }
-        .print-simulation, .print-simulation body {
-            background: #525659 !important;
-        }
-        .print-simulation section {
-            padding: 4mm 0 !important; overflow: visible !important; margin: 0 !important; box-shadow: none !important; border-radius: 0 !important; background-color: transparent !important;
+        .print-simulation #page-content .container {
+             max-width: 100% !important;
+             padding: 0 10mm !important;
         }
         .print-simulation .reveal-up {
             transform: none !important; opacity: 1 !important; transition: none !important;
@@ -587,26 +592,22 @@
         .print-simulation h1, .print-simulation h2, .print-simulation h3, .print-simulation p {
             color: #000 !important; text-align: left;
         }
-        .print-simulation h1 { font-size: 22pt !important; margin-bottom: 5mm !important; }
-        .print-simulation h2 { font-size: 16pt !important; margin-bottom: 4mm !important; }
-        .print-simulation h3 { font-size: 12pt !important; margin-bottom: 2mm !important; }
+        .print-simulation h1 { font-size: 22pt !important; margin-bottom: 4mm !important; }
+        .print-simulation h2 { font-size: 16pt !important; margin-bottom: 3mm !important; }
+        .print-simulation h3 { font-size: 12pt !important; margin-bottom: 1.5mm !important; }
         .print-simulation p, .print-simulation .p-large, .print-simulation .p-small, .print-simulation .value, .print-simulation .param { 
             font-size: 9.5pt !important; line-height: 1.4 !important; max-width: 100% !important;
         }
-        .print-simulation .container {
-            max-width: 100% !important; padding: 0 !important;
-        }
-        .print-simulation .hero { padding: 5mm 0 !important; }
-        .print-simulation #product-shot { padding: 5mm 0 !important; text-align: center; }
-        .print-simulation #product-shot img { max-height: 60mm; width: auto; margin: 0 auto; }
-        .print-simulation .features-grid { grid-template-columns: 1fr 1fr; gap: 5mm 8mm !important; margin-top: 4mm !important; }
+        .print-simulation .hero { padding: 2mm 0 !important; }
+        .print-simulation #product-shot { padding: 3mm 0 !important; text-align: center; }
+        .print-simulation #product-shot img { max-height: 55mm; width: auto; margin: 0 auto; }
+        .print-simulation .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm 6mm !important; margin-top: 3mm !important; }
         .print-simulation .feature-item { box-shadow: none !important; padding: 0 !important; border-radius: 0 !important; text-align: left; background-color: transparent !important; }
-        .print-simulation .feature-item .icon { font-size: 18pt !important; margin-bottom: 2mm !important; }
+        .print-simulation .feature-item .icon { font-size: 18pt !important; margin-bottom: 1.5mm !important; }
         
-        /* ---- MODIFIED: Science Section Layout for Print Simulation ---- */
         .print-simulation .science-main-grid {
             display: flex !important;
-            gap: 10mm;
+            gap: 8mm;
             align-items: flex-start;
         }
         .print-simulation .science-grid, .print-simulation .science-grid-reverse {
@@ -621,16 +622,13 @@
             max-width: 100% !important;
             height: auto !important;
             display: block;
-            margin-top: 4mm;
+            margin-top: 3mm;
             box-shadow: none !important;
             border-radius: 0 !important;
         }
 
-        .print-simulation .specs-table { margin-top: 5mm !important; gap: 2mm 8mm !important; }
-        .print-simulation h1, .print-simulation h2, .print-simulation h3, .print-simulation h4, .print-simulation .feature-item, .print-simulation .specs-table, .print-simulation #product-shot, .print-simulation .science-grid { break-inside: avoid; }
-        .print-simulation h2, .print-simulation h3 { break-after: avoid; }
-        .print-simulation img { max-width: 100% !important; height: auto !important; }
-        .print-simulation .print-footer { display: block !important; text-align: center; margin-top: 8mm; padding-top: 4mm; border-top: 1px solid #ccc; font-size: 8pt; color: #555; break-before: auto; }
+        .print-simulation .specs-table { display: grid; margin-top: 4mm !important; gap: 1.5mm 6mm !important; }
+        .print-simulation .print-footer { display: block !important; text-align: center; margin-top: 5mm; padding: 3mm 10mm 0 10mm; border-top: 1px solid #ccc; font-size: 8pt; color: #555; }
         .print-simulation a[href]:after { content: ""; }
 
     </style>
@@ -639,9 +637,8 @@
     <!-- This button is only for exiting the preview -->
     <button id="exit-preview-btn-fixed" style="display: none;">Exit Preview</button>
 
-    <!-- Wrapper for page content, used in simulation -->
-    <div id="page-wrapper">
-
+    <!-- Wrapper for all page content -->
+    <div id="page-content">
         <!-- Navigation Bar -->
         <nav class="main-nav">
             <div class="container">
@@ -806,7 +803,7 @@
             <p>Contact Us: enquiry@xjeralabs.com</p>
             <p>© 2025 Xjeralabs PTE LTD . All rights reserved.</p>
         </div>
-    </div> <!-- End of #page-wrapper -->
+    </div> <!-- End of #page-content -->
 
     <!-- JS Script -->
     <script>
