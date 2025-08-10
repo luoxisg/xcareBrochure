@@ -130,18 +130,39 @@
             color: var(--text-color-primary);
         }
         
-        .nav-button {
-            background-color: var(--accent-color);
-            color: #fff;
+        /* MODIFIED: Styles for the action buttons container */
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-button, .nav-actions button {
+            display: inline-block;
             text-decoration: none;
             padding: 6px 16px;
             border-radius: 980px;
             font-size: 14px;
             font-weight: 500;
+            border: none;
+            cursor: pointer;
             transition: background-color 0.3s;
+        }
+
+        .nav-button {
+            background-color: var(--accent-color);
+            color: #fff;
         }
         .nav-button:hover {
             background-color: #a58829; /* Darker gold on hover */
+        }
+        
+        #simulate-print-btn {
+            background-color: var(--brand-primary-blue);
+            color: white;
+        }
+        #simulate-print-btn:hover {
+            background-color: #1e2050;
         }
         
         /* Hero Section */
@@ -371,18 +392,12 @@
             }
         }
 
-        /* ===== Print Simulation Controls ===== */
-        #print-controls {
+        /* ===== NEW: Styles for the fixed Exit Preview button ===== */
+        #exit-preview-btn-fixed {
             position: fixed;
-            top: 70px;
+            top: 20px;
             right: 20px;
-            z-index: 200;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        #print-controls button {
+            z-index: 9999;
             padding: 8px 16px;
             background-color: var(--brand-primary-gold);
             color: white;
@@ -392,17 +407,13 @@
             font-family: var(--font-family-brand);
             font-weight: 500;
             box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            transition: background-color 0.3s;
-        }
-        #print-controls button:hover {
-            background-color: #a58829;
         }
 
 
        /* ===== A4 Print Export Styles (For actual printing) ===== */
         @media print {
           /* Hide simulation controls during actual print */
-          #print-controls { display: none !important; }
+          .nav-actions, #exit-preview-btn-fixed { display: none !important; }
           /* ---- General Print Reset ---- */
           html, body {
             height: auto !important;
@@ -480,31 +491,25 @@
           
           /* ---- MODIFIED: Science Section Layout for Print ---- */
           .science-main-grid {
-              display: flex;
-              flex-wrap: wrap;
-              justify-content: center;
-              gap: 0 10mm; /* Row gap 0, column gap 10mm */
+              display: flex !important;
+              gap: 10mm;
+              align-items: flex-start;
           }
           .science-grid, .science-grid-reverse {
-              display: contents; /* Makes children direct flex items of science-main-grid */
+              flex: 1;
+              display: block !important;
+              margin-top: 0 !important;
           }
           .science-text {
-              flex-basis: 100%; /* Each text block takes full width */
-              order: 1; /* All text blocks appear first */
-              margin-bottom: 4mm;
-          }
-          .science-visual {
-              flex: 1; /* The two visual blocks share the space */
-              order: 2; /* Visual blocks appear after text blocks */
-              text-align: center;
+              text-align: left;
           }
           .science-visual img {
-              max-height: 55mm !important;
-              width: auto !important;
-              display: inline-block;
+              max-width: 100% !important;
+              height: auto !important;
+              display: block;
+              margin-top: 4mm;
               box-shadow: none !important;
               border-radius: 0 !important;
-              margin: 0;
           }
 
           .specs-table {
@@ -543,13 +548,8 @@
             -webkit-font-smoothing: auto;
             -moz-osx-font-smoothing: auto;
         }
-        .print-simulation #print-controls,
         .print-simulation .main-nav,
-        .print-simulation footer,
-        .print-simulation .nav-button,
-        .print-simulation .main-cta-button,
-        .print-simulation .app-stores,
-        .print-simulation script {
+        .print-simulation footer {
             display: none !important;
         }
         .print-simulation #page-wrapper {
@@ -592,30 +592,24 @@
         /* ---- MODIFIED: Science Section Layout for Print Simulation ---- */
         .print-simulation .science-main-grid {
             display: flex !important;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0 10mm;
+            gap: 10mm;
+            align-items: flex-start;
         }
         .print-simulation .science-grid, .print-simulation .science-grid-reverse {
-            display: contents !important;
+            flex: 1;
+            display: block !important;
+            margin-top: 0 !important;
         }
         .print-simulation .science-text {
-            flex-basis: 100%;
-            order: 1;
-            margin-bottom: 4mm;
-        }
-        .print-simulation .science-visual {
-            flex: 1;
-            order: 2;
-            text-align: center;
+            text-align: left;
         }
         .print-simulation .science-visual img {
-            max-height: 55mm !important;
-            width: auto !important;
-            display: inline-block;
+            max-width: 100% !important;
+            height: auto !important;
+            display: block;
+            margin-top: 4mm;
             box-shadow: none !important;
             border-radius: 0 !important;
-            margin: 0;
         }
 
         .print-simulation .specs-table { margin-top: 5mm !important; gap: 2mm 8mm !important; }
@@ -628,11 +622,8 @@
     </style>
 </head>
 <body>
-    <!-- Buttons for Print Simulation and Direct Printing -->
-    <div id="print-controls">
-        <button id="simulate-print-btn">Simulate PDF Print</button>
-        <button id="exit-preview-btn" style="display: none;">Exit Preview</button>
-    </div>
+    <!-- NEW: This button is only for exiting the preview -->
+    <button id="exit-preview-btn-fixed" style="display: none;">Exit Preview</button>
 
     <!-- Wrapper for page content, used in simulation -->
     <div id="page-wrapper">
@@ -641,7 +632,11 @@
         <nav class="main-nav">
             <div class="container">
                 <a href="#" class="nav-logo">XCare</a>
-                <a href="#footer-cta" class="nav-button">Order Now</a>
+                <!-- MODIFIED: Container for all action buttons -->
+                <div class="nav-actions">
+                    <a href="#footer-cta" class="nav-button">Order Now</a>
+                    <button id="simulate-print-btn">Simulate PDF Print</button>
+                </div>
             </div>
         </nav>
 
@@ -833,20 +828,16 @@
 
             // Print Simulation Logic
             const simulateBtn = document.getElementById('simulate-print-btn');
-            const exitBtn = document.getElementById('exit-preview-btn');
-            const printControls = document.getElementById('print-controls');
+            const exitBtn = document.getElementById('exit-preview-btn-fixed');
             const body = document.body;
 
             simulateBtn.addEventListener('click', () => {
                 body.classList.add('print-simulation');
-                simulateBtn.style.display = 'none';
                 exitBtn.style.display = 'block';
-                printControls.style.position = 'fixed'; 
             });
 
             exitBtn.addEventListener('click', () => {
                 body.classList.remove('print-simulation');
-                simulateBtn.style.display = 'block';
                 exitBtn.style.display = 'none';
             });
         });
