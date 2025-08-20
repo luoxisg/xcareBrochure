@@ -187,10 +187,9 @@
             .specs-table { display: grid; margin-top: 3mm !important; gap: 1mm 5mm !important; }
             .print-footer { display: block !important; text-align: center; margin-top: 4mm; padding-top: 3mm; border-top: 1px solid #ccc; font-size: 8pt; color: #555; }
             
-            /* NEW: Image frame styles */
             .image-frame {
                 width: 100%;
-                height: 55mm; /* Default height for image frames */
+                height: 55mm;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -198,12 +197,12 @@
                 overflow: hidden;
             }
             .science-visual .image-frame {
-                height: 50mm; /* Specific height for science images */
+                height: 50mm;
             }
             .image-frame img {
                 width: 100%;
                 height: 100%;
-                object-fit: contain; /* This is the key property */
+                object-fit: contain;
             }
         }
         
@@ -213,7 +212,7 @@
             body { background: #fff !important; }
             .main-nav, footer, .preview-controls, .nav-actions, script, #print-preview-container { display: none !important; }
             #page-content { display: block !important; }
-            .content-block { break-inside: avoid; }
+            .page-break-before { break-before: page; }
         }
 
         /* ===== PDF PREVIEW SIMULATION STYLES ===== */
@@ -231,7 +230,7 @@
         .simulated-page {
             background: white;
             width: 210mm;
-            height: 297mm; /* Fixed height for accurate simulation */
+            height: 297mm;
             margin: 0 auto 20px auto;
             padding: 10mm;
             box-sizing: border-box;
@@ -260,123 +259,135 @@
                 </div>
             </div>
         </nav>
-
-        <header class="hero content-block">
-            <div class="container">
-                <div class="brand-name">XCare H5 Pro</div>
-                <h1>The Unseen Guardian.</h1>
-                <p class="p-large">Non-Contact mmWave Vital Signs Radar. Continuously and non-intrusively watch over the well-being of your loved ones.</p>
-            </div>
-        </header>
         
-        <section id="product-shot" class="content-block">
-            <div class="container">
-                <div class="image-frame">
-                    <img src="image/product.jpg" alt="The XCare H5 Pro device" onerror="this.onerror=null;this.src='https://placehold.co/450x450/f5f5f7/27296A?text=XCare+H5+Pro';">
+        <!-- Wrapper for all printable content -->
+        <div class="printable-area">
+            <!-- Page 1 Content -->
+            <div class="content-block">
+                <header class="hero">
+                    <div class="container">
+                        <div class="brand-name">XCare H5 Pro</div>
+                        <h1>The Unseen Guardian.</h1>
+                        <p class="p-large">Non-Contact mmWave Vital Signs Radar. Continuously and non-intrusively watch over the well-being of your loved ones.</p>
+                    </div>
+                </header>
+                <section id="product-shot">
+                    <div class="container">
+                        <div class="image-frame">
+                            <img src="image/product.jpg" alt="The XCare H5 Pro device" onerror="this.onerror=null;this.src='https://placehold.co/450x450/f5f5f7/27296A?text=XCare+H5+Pro';">
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <!-- Page 2 Content -->
+            <div class="content-block page-break-before">
+                <main>
+                    <section class="bg-light">
+                        <div class="container">
+                            <h2>Preserve their independence.<br>Secure your peace of mind.</h2>
+                            <p class="p-large">
+                                XCare is designed to be invisible, safeguarding the independence and dignity of your elders. It operates silently in the background, ensuring that help is always on standby when needed. No intrusive cameras, no wearables required. Just life, continuing with freedom and safety.
+                            </p>
+                        </div>
+                    </section>
+                    <section id="features" class="bg-light">
+                        <div class="container">
+                            <div>
+                                <h2>Intelligence that Cares.</h2>
+                                <p>The XCare H5 Pro is packed with powerful, thoughtful features designed to provide a complete circle of protection and peace of mind.</p>
+                            </div>
+                            <div class="features-grid">
+                                <div class="feature-item">
+                                    <div class="icon">❤️</div> <h3>Health Monitoring Sensor</h3>
+                                    <p class="p-small">Precisely tracks key vitals like heart rate and respiration, providing a clear window into their ongoing health status.</p>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="icon">🚶</div> <h3>Presence Detection</h3>
+                                    <p class="p-small">Offers non-contact indoor monitoring of position and activity with customizable zones and real-time tracking.</p>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="icon">📡</div> <h3>Wi-Fi & 4G Alerts</h3>
+                                    <p class="p-small">Ensures that critical alerts are sent reliably, with dual connectivity options that keep you informed, no matter what.</p>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="icon">🛡️</div> <h3>Private AI Protection</h3>
+                                    <p class="p-small">All sensitive data is processed on the device. Nothing is sent to the cloud, ensuring total privacy and security.</p>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="icon">🔄</div> <h3>Automatic Updates</h3>
+                                    <p class="p-small">The device software updates automatically, continuously improving with new features and enhanced performance.</p>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="icon">🎙️</div> <h3>Voice Intercom</h3>
+                                    <p class="p-small">Speak directly through the device. Offer a reassuring word or provide guidance from anywhere, right when it's needed.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+            
+            <!-- Page 3 Content -->
+            <div class="content-block page-break-before">
+                <section id="science" class="bg-light">
+                    <div class="container">
+                        <div> <h2>The Science Behind the Serenity.</h2> </div>
+                        <div class="science-main-grid">
+                            <div class="science-grid">
+                                <div class="science-text">
+                                    <h3>Seeing the Invisible</h3>
+                                    <p class="p-small" style="max-width: 100%;">XCare utilizes advanced 60 GHz millimeter-wave technology. Unlike a camera, it perceives the space using safe, low-power radio waves. It can accurately detect the most subtle vital signs, like the rise and fall of a chest or a heartbeat, even through blankets or in complete darkness.</p>
+                                </div>
+                                <div class="science-visual">
+                                    <div class="image-frame">
+                                        <img src="image/usecase.png" alt="Millimeter-Wave Sensing Animation" onerror="this.onerror=null;this.src='https://placehold.co/400x300/e0e0e0/999?text=Usecase+Visual';">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="science-grid science-grid-reverse">
+                                 <div class="science-visual">
+                                    <div class="image-frame">
+                                        <img src="image/screen.jpg" alt="Health Monitor App Interface" onerror="this.onerror=null;this.src='https://placehold.co/300x500/e0e0e0/999?text=App+Screen';">
+                                    </div>
+                                </div>
+                                <div class="science-text">
+                                    <h3>On-Device Intelligence</h3>
+                                    <p class="p-small" style="max-width: 100%;">Your family's privacy is paramount. That's why all sensitive data is analyzed locally on XCare's dedicated AI processor. Alerts are only sent when an emergency is detected. No images are ever captured, and no raw health data is stored in the cloud.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="specs">
+                    <div class="container">
+                        <h2>Meticulously Crafted for the Home and Nursing Home.</h2>
+                        <p>Every detail of XCare is designed to blend into the home environment, ensuring exceptional performance and simple installation for silent, unobtrusive protection.</p>
+                        <div class="specs-table">
+                            <div class="param">Core Technology</div><div class="value">60 GHz Millimeter-Wave Radar</div>
+                            <div class="param">Heart Rate Accuracy</div><div class="value">≤ ±5 bpm</div>
+                            <div class="param">Respiration Accuracy</div><div class="value">≤ ±5 bpm</div>
+                            <div class="param">Effective Detection Range</div><div class="value">0.5m – 1.5m</div>
+                            <div class="param">Horizontal Coverage</div><div class="value">Approx. 1.2 m (standard bed width)</div>
+                            <div class="param">Installation</div><div class="value">Ceiling Mount (Recommended)</div>
+                            <div class="param">Recommended Height</div><div class="value">2.3m – 3.3m</div>
+                            <div class="param">Connectivity</div><div class="value">Wi-Fi / 4G (Optional)</div>
+                            <div class="param">Power Input</div><div class="value">DC 5V / 2A (Adapter included)</div>
+                        </div>
+                    </div>
+                </section>
+                <section id="ecosystem">
+                    <div class="container">
+                        <h2>A Complete Circle of Care.</h2>
+                        <p>XCare is more than a device; it's a connected ecosystem. You can view real-time vital signs and historical trends through the XCare App. When the system detects an anomaly, you receive immediate alerts via the app, SMS, or a phone call. Plus, with two-way voice intercom, you can speak directly through the device to offer comfort or instructions. True peace of mind, right at your fingertips.</p>
+                    </div>
+                </section>
+                <div class="print-footer">
+                    <p>Contact Us: enquiry@xjeralabs.com</p>
+                    <p>© 2025 Xjeralabs PTE LTD . All rights reserved.</p>
                 </div>
             </div>
-        </section>
-
-        <main>
-            <section class="bg-light content-block">
-                <div class="container">
-                    <h2>Preserve their independence.<br>Secure your peace of mind.</h2>
-                    <p class="p-large">
-                        XCare is designed to be invisible, safeguarding the independence and dignity of your elders. It operates silently in the background, ensuring that help is always on standby when needed. No intrusive cameras, no wearables required. Just life, continuing with freedom and safety.
-                    </p>
-                </div>
-            </section>
-
-            <section id="features" class="bg-light content-block">
-                <div class="container">
-                    <div>
-                        <h2>Intelligence that Cares.</h2>
-                        <p>The XCare H5 Pro is packed with powerful, thoughtful features designed to provide a complete circle of protection and peace of mind.</p>
-                    </div>
-                    <div class="features-grid">
-                        <div class="feature-item">
-                            <div class="icon">❤️</div> <h3>Health Monitoring Sensor</h3>
-                            <p class="p-small">Precisely tracks key vitals like heart rate and respiration, providing a clear window into their ongoing health status.</p>
-                        </div>
-                        <div class="feature-item">
-                            <div class="icon">🚶</div> <h3>Presence Detection</h3>
-                            <p class="p-small">Offers non-contact indoor monitoring of position and activity with customizable zones and real-time tracking.</p>
-                        </div>
-                        <div class="feature-item">
-                            <div class="icon">📡</div> <h3>Wi-Fi & 4G Alerts</h3>
-                            <p class="p-small">Ensures that critical alerts are sent reliably, with dual connectivity options that keep you informed, no matter what.</p>
-                        </div>
-                        <div class="feature-item">
-                            <div class="icon">🛡️</div> <h3>Private AI Protection</h3>
-                            <p class="p-small">All sensitive data is processed on the device. Nothing is sent to the cloud, ensuring total privacy and security.</p>
-                        </div>
-                        <div class="feature-item">
-                            <div class="icon">🔄</div> <h3>Automatic Updates</h3>
-                            <p class="p-small">The device software updates automatically, continuously improving with new features and enhanced performance.</p>
-                        </div>
-                        <div class="feature-item">
-                            <div class="icon">🎙️</div> <h3>Voice Intercom</h3>
-                            <p class="p-small">Speak directly through the device. Offer a reassuring word or provide guidance from anywhere, right when it's needed.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="science" class="bg-light content-block">
-                <div class="container">
-                    <div> <h2>The Science Behind the Serenity.</h2> </div>
-                    <div class="science-main-grid">
-                        <div class="science-grid">
-                            <div class="science-text">
-                                <h3>Seeing the Invisible</h3>
-                                <p class="p-small" style="max-width: 100%;">XCare utilizes advanced 60 GHz millimeter-wave technology. Unlike a camera, it perceives the space using safe, low-power radio waves. It can accurately detect the most subtle vital signs, like the rise and fall of a chest or a heartbeat, even through blankets or in complete darkness.</p>
-                            </div>
-                            <div class="science-visual">
-                                <div class="image-frame">
-                                    <img src="image/usecase.png" alt="Millimeter-Wave Sensing Animation" onerror="this.onerror=null;this.src='https://placehold.co/400x300/e0e0e0/999?text=Usecase+Visual';">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="science-grid science-grid-reverse">
-                             <div class="science-visual">
-                                <div class="image-frame">
-                                    <img src="image/screen.jpg" alt="Health Monitor App Interface" onerror="this.onerror=null;this.src='https://placehold.co/300x500/e0e0e0/999?text=App+Screen';">
-                                </div>
-                            </div>
-                            <div class="science-text">
-                                <h3>On-Device Intelligence</h3>
-                                <p class="p-small" style="max-width: 100%;">Your family's privacy is paramount. That's why all sensitive data is analyzed locally on XCare's dedicated AI processor. Alerts are only sent when an emergency is detected. No images are ever captured, and no raw health data is stored in the cloud.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <section id="specs" class="content-block">
-                <div class="container">
-                    <h2>Meticulously Crafted for the Home and Nursing Home.</h2>
-                    <p>Every detail of XCare is designed to blend into the home environment, ensuring exceptional performance and simple installation for silent, unobtrusive protection.</p>
-                    <div class="specs-table">
-                        <div class="param">Core Technology</div><div class="value">60 GHz Millimeter-Wave Radar</div>
-                        <div class="param">Heart Rate Accuracy</div><div class="value">≤ ±5 bpm</div>
-                        <div class="param">Respiration Accuracy</div><div class="value">≤ ±5 bpm</div>
-                        <div class="param">Effective Detection Range</div><div class="value">0.5m – 1.5m</div>
-                        <div class="param">Horizontal Coverage</div><div class="value">Approx. 1.2 m (standard bed width)</div>
-                        <div class="param">Installation</div><div class="value">Ceiling Mount (Recommended)</div>
-                        <div class="param">Recommended Height</div><div class="value">2.3m – 3.3m</div>
-                        <div class="param">Connectivity</div><div class="value">Wi-Fi / 4G (Optional)</div>
-                        <div class="param">Power Input</div><div class="value">DC 5V / 2A (Adapter included)</div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="ecosystem" class="content-block">
-                <div class="container">
-                    <h2>A Complete Circle of Care.</h2>
-                    <p>XCare is more than a device; it's a connected ecosystem. You can view real-time vital signs and historical trends through the XCare App. When the system detects an anomaly, you receive immediate alerts via the app, SMS, or a phone call. Plus, with two-way voice intercom, you can speak directly through the device to offer comfort or instructions. True peace of mind, right at your fingertips.</p>
-                </div>
-            </section>
-        </main>
+        </div>
 
         <footer id="footer-cta">
             <div class="container">
@@ -393,11 +404,6 @@
                 </div>
             </div>
         </footer>
-        
-        <div class="print-footer content-block">
-            <p>Contact Us: enquiry@xjeralabs.com</p>
-            <p>© 2025 Xjeralabs PTE LTD . All rights reserved.</p>
-        </div>
     </div>
 
     <script>
@@ -431,41 +437,24 @@
         const pageContent = document.getElementById('page-content');
         const previewContainer = document.getElementById('print-preview-container');
 
-        // --- Smart Pagination Logic for Compact Layout ---
+        // --- Simplified Pagination Logic based on Manual Breaks ---
         function generatePreviewPages() {
             previewContainer.innerHTML = ''; 
-            
-            const A4_PRINTABLE_HEIGHT_MM = 297 - 20; // A4 height minus 10mm top/bottom margins
-            const MM_TO_PX = 3.7795275591; 
-            const MAX_PAGE_HEIGHT_PX = A4_PRINTABLE_HEIGHT_MM * MM_TO_PX;
-
-            const contentBlocks = pageContent.querySelectorAll('.content-block');
+            const contentBlocks = document.querySelectorAll('.printable-area > .content-block');
             
             let currentPage = createNewPage();
             let currentPageContentWrapper = currentPage.querySelector('.print-styles-container');
-            let currentHeight = 0;
 
-            contentBlocks.forEach(block => {
-                const clonedBlock = block.cloneNode(true);
-                
-                const tempDiv = document.createElement('div');
-                tempDiv.style.position = 'absolute';
-                tempDiv.style.left = '-9999px';
-                tempDiv.style.width = '190mm'; // A4 width minus 10mm left/right margins
-                tempDiv.className = 'print-styles-container'; 
-                tempDiv.appendChild(clonedBlock);
-                document.body.appendChild(tempDiv);
-                const blockHeight = tempDiv.offsetHeight;
-                document.body.removeChild(tempDiv);
-                
-                if ((currentHeight + blockHeight > MAX_PAGE_HEIGHT_PX) && currentPageContentWrapper.children.length > 0) {
+            contentBlocks.forEach((block, index) => {
+                if (block.classList.contains('page-break-before') && index > 0) {
                     currentPage = createNewPage();
                     currentPageContentWrapper = currentPage.querySelector('.print-styles-container');
-                    currentHeight = 0;
                 }
                 
-                currentPageContentWrapper.appendChild(clonedBlock.cloneNode(true));
-                currentHeight += blockHeight;
+                const clonedBlock = block.cloneNode(true);
+                // Remove the class in the clone to prevent it from affecting the preview layout itself
+                clonedBlock.classList.remove('page-break-before');
+                currentPageContentWrapper.appendChild(clonedBlock);
             });
         }
 
@@ -504,4 +493,4 @@
     </script>
 
 </body>
-</html>
+</ht
