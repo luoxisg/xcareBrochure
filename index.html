@@ -177,24 +177,34 @@
             .container { max-width: 100% !important; padding: 0 !important; }
             .reveal-up { transform: none !important; opacity: 1 !important; transition: none !important; }
             
-            #product-shot { text-align: center; }
-            #product-shot img { max-height: 55mm; width: auto; margin: 0 auto; }
             .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm 5mm !important; margin-top: 2mm !important; }
             .feature-item { box-shadow: none !important; padding: 0 !important; border-radius: 0 !important; text-align: left; background: transparent !important; }
             .feature-item .icon { font-size: 16pt !important; margin-bottom: 1mm !important; }
             
             .science-main-grid { display: flex !important; gap: 6mm; align-items: flex-start; }
             .science-grid, .science-grid-reverse { flex: 1; display: block !important; margin-top: 0 !important; }
-            .science-visual img {
-                box-shadow: none !important;
-                border-radius: 0 !important;
-                max-height: 50mm !important; /* 限制科学部分图片的最大高度 */
-                display: block !important;
-                margin: 0 auto !important;
-            }
+            
             .specs-table { display: grid; margin-top: 3mm !important; gap: 1mm 5mm !important; }
             .print-footer { display: block !important; text-align: center; margin-top: 4mm; padding-top: 3mm; border-top: 1px solid #ccc; font-size: 8pt; color: #555; }
-            img { max-width: 100% !important; height: auto !important; }
+            
+            /* NEW: Image frame styles */
+            .image-frame {
+                width: 100%;
+                height: 55mm; /* Default height for image frames */
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 4mm;
+                overflow: hidden;
+            }
+            .science-visual .image-frame {
+                height: 50mm; /* Specific height for science images */
+            }
+            .image-frame img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain; /* This is the key property */
+            }
         }
         
         /* ===== A4 PRINT SPECIFIC STYLES ===== */
@@ -261,7 +271,9 @@
         
         <section id="product-shot" class="content-block">
             <div class="container">
-                <img src="image/product.jpg" alt="The XCare H5 Pro device" onerror="this.onerror=null;this.src='https://placehold.co/450x450/f5f5f7/27296A?text=XCare+H5+Pro';">
+                <div class="image-frame">
+                    <img src="image/product.jpg" alt="The XCare H5 Pro device" onerror="this.onerror=null;this.src='https://placehold.co/450x450/f5f5f7/27296A?text=XCare+H5+Pro';">
+                </div>
             </div>
         </section>
 
@@ -320,12 +332,16 @@
                                 <p class="p-small" style="max-width: 100%;">XCare utilizes advanced 60 GHz millimeter-wave technology. Unlike a camera, it perceives the space using safe, low-power radio waves. It can accurately detect the most subtle vital signs, like the rise and fall of a chest or a heartbeat, even through blankets or in complete darkness.</p>
                             </div>
                             <div class="science-visual">
-                                <img src="image/usecase.png" alt="Millimeter-Wave Sensing Animation" onerror="this.onerror=null;this.src='https://placehold.co/400x300/e0e0e0/999?text=Usecase+Visual';">
+                                <div class="image-frame">
+                                    <img src="image/usecase.png" alt="Millimeter-Wave Sensing Animation" onerror="this.onerror=null;this.src='https://placehold.co/400x300/e0e0e0/999?text=Usecase+Visual';">
+                                </div>
                             </div>
                         </div>
                         <div class="science-grid science-grid-reverse">
                              <div class="science-visual">
-                                <img src="image/screen.jpg" alt="Health Monitor App Interface" style="max-width: 70%; height: auto; display: block; margin: 0 auto;" onerror="this.onerror=null;this.src='https://placehold.co/300x500/e0e0e0/999?text=App+Screen';">
+                                <div class="image-frame">
+                                    <img src="image/screen.jpg" alt="Health Monitor App Interface" onerror="this.onerror=null;this.src='https://placehold.co/300x500/e0e0e0/999?text=App+Screen';">
+                                </div>
                             </div>
                             <div class="science-text">
                                 <h3>On-Device Intelligence</h3>
