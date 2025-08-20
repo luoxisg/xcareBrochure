@@ -248,6 +248,7 @@
             </div>
         </nav>
 
+        <!-- Page 1 Content -->
         <header class="hero content-block">
             <div class="container">
                 <div class="brand-name">XCare H5 Pro</div>
@@ -263,6 +264,7 @@
         </section>
 
         <main>
+            <!-- Page 2 Content -->
             <section class="bg-light content-block page-break-before">
                 <div class="container">
                     <h2>Preserve their independence.<br>Secure your peace of mind.</h2>
@@ -307,6 +309,7 @@
                 </div>
             </section>
 
+            <!-- Page 3 Content -->
             <section id="science" class="bg-light content-block page-break-before">
                 <div class="container">
                     <div> <h2>The Science Behind the Serenity.</h2> </div>
@@ -333,7 +336,7 @@
                 </div>
             </section>
             
-            <section id="specs" class="content-block page-break-before">
+            <section id="specs" class="content-block">
                 <div class="container">
                     <h2>Meticulously Crafted for the Home and Nursing Home.</h2>
                     <p>Every detail of XCare is designed to blend into the home environment, ensuring exceptional performance and simple installation for silent, unobtrusive protection.</p>
@@ -412,50 +415,25 @@
         const pageContent = document.getElementById('page-content');
         const previewContainer = document.getElementById('print-preview-container');
 
-        // --- NEW: Smart Pagination Logic ---
+        // --- Simplified Pagination Logic ---
         function generatePreviewPages() {
             previewContainer.innerHTML = ''; // Clear previous preview
             
-            // A4 paper height in mm minus top/bottom margins (10mm each)
-            const A4_PRINTABLE_HEIGHT_MM = 297 - 20;
-            // Convert mm to pixels (this is an approximation)
-            const MM_TO_PX = 3.7795275591; 
-            const MAX_PAGE_HEIGHT_PX = A4_PRINTABLE_HEIGHT_MM * MM_TO_PX;
-
             const contentBlocks = pageContent.querySelectorAll('.content-block');
             
             let currentPage = createNewPage();
             let currentPageContentWrapper = currentPage.querySelector('.print-styles-container');
-            let currentHeight = 0;
 
             contentBlocks.forEach(block => {
-                const clonedBlock = block.cloneNode(true);
-                
-                // To measure height accurately, we must render it invisibly
-                const tempDiv = document.createElement('div');
-                tempDiv.style.position = 'absolute';
-                tempDiv.style.left = '-9999px';
-                tempDiv.style.width = '190mm'; // A4 width minus margins
-                tempDiv.className = 'print-styles-container'; // Apply print styles for accurate measurement
-                tempDiv.appendChild(clonedBlock);
-                document.body.appendChild(tempDiv);
-                const blockHeight = tempDiv.offsetHeight;
-                document.body.removeChild(tempDiv);
-
-                const isManualBreak = block.classList.contains('page-break-before');
-                const willOverflow = (currentHeight + blockHeight > MAX_PAGE_HEIGHT_PX);
-                
-                // Start a new page if:
-                // 1. A manual break is forced AND the current page is not empty.
-                // 2. The block will overflow the page AND the current page is not empty.
-                if ((isManualBreak || willOverflow) && currentPageContentWrapper.children.length > 0) {
+                // If a block is marked to start a new page, and the current page is not empty, 
+                // finalize the current page and start a new one.
+                if (block.classList.contains('page-break-before') && currentPageContentWrapper.children.length > 0) {
                     currentPage = createNewPage();
                     currentPageContentWrapper = currentPage.querySelector('.print-styles-container');
-                    currentHeight = 0;
                 }
                 
+                const clonedBlock = block.cloneNode(true);
                 currentPageContentWrapper.appendChild(clonedBlock);
-                currentHeight += blockHeight;
             });
         }
 
