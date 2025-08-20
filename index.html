@@ -165,29 +165,35 @@
             .specs-table { grid-template-columns: 1fr 1.5fr; gap: 12px 15px; font-size: 16px; }
         }
 
-        /* ===== UNIFIED PRINT & PREVIEW STYLES ===== */
+        /* ===== UNIFIED PRINT & PREVIEW STYLES (FOR COMPACT LAYOUT) ===== */
         .print-styles-container, @media print {
             h1, h2, h3, p, .value, .param { color: #000 !important; text-align: left; }
-            h1 { font-size: 22pt !important; margin-bottom: 4mm !important; }
-            h2 { font-size: 16pt !important; margin-bottom: 3mm !important; }
-            h3 { font-size: 12pt !important; margin-bottom: 1.5mm !important; }
-            p, .p-large, .p-small, .value, .param { font-size: 9.5pt !important; line-height: 1.4 !important; max-width: 100% !important; }
+            h1 { font-size: 22pt !important; margin-top: 0; margin-bottom: 3mm !important; }
+            h2 { font-size: 16pt !important; margin-top: 0; margin-bottom: 2mm !important; }
+            h3 { font-size: 12pt !important; margin-top: 0; margin-bottom: 1.5mm !important; }
+            p, .p-large, .p-small, .value, .param { font-size: 9.5pt !important; line-height: 1.4 !important; max-width: 100% !important; margin-bottom: 2mm !important; }
             
-            section, header { padding: 2mm 0 !important; overflow: visible !important; margin: 0 !important; box-shadow: none !important; border-radius: 0 !important; background: transparent !important; }
+            section, header { padding: 0 !important; margin: 0 0 4mm 0 !important; overflow: visible !important; box-shadow: none !important; border-radius: 0 !important; background: transparent !important; }
             .container { max-width: 100% !important; padding: 0 !important; }
             .reveal-up { transform: none !important; opacity: 1 !important; transition: none !important; }
             
-            #product-shot { padding: 3mm 0 !important; text-align: center; }
+            #product-shot { text-align: center; }
             #product-shot img { max-height: 55mm; width: auto; margin: 0 auto; }
-            .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm 6mm !important; margin-top: 3mm !important; }
+            .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm 5mm !important; margin-top: 2mm !important; }
             .feature-item { box-shadow: none !important; padding: 0 !important; border-radius: 0 !important; text-align: left; background: transparent !important; }
-            .feature-item .icon { font-size: 18pt !important; margin-bottom: 1.5mm !important; }
+            .feature-item .icon { font-size: 16pt !important; margin-bottom: 1mm !important; }
             
-            .science-main-grid { display: flex !important; gap: 8mm; align-items: flex-start; }
+            .science-main-grid { display: flex !important; gap: 6mm; align-items: flex-start; }
             .science-grid, .science-grid-reverse { flex: 1; display: block !important; margin-top: 0 !important; }
-            .science-visual img { box-shadow: none !important; border-radius: 0 !important; }
-            .specs-table { display: grid; margin-top: 4mm !important; gap: 1.5mm 6mm !important; }
-            .print-footer { display: block !important; text-align: center; margin-top: 5mm; padding-top: 3mm; border-top: 1px solid #ccc; font-size: 8pt; color: #555; }
+            .science-visual img {
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                max-height: 50mm !important; /* 限制科学部分图片的最大高度 */
+                display: block !important;
+                margin: 0 auto !important;
+            }
+            .specs-table { display: grid; margin-top: 3mm !important; gap: 1mm 5mm !important; }
+            .print-footer { display: block !important; text-align: center; margin-top: 4mm; padding-top: 3mm; border-top: 1px solid #ccc; font-size: 8pt; color: #555; }
             img { max-width: 100% !important; height: auto !important; }
         }
         
@@ -196,9 +202,8 @@
             @page { size: A4; margin: 10mm; }
             body { background: #fff !important; }
             .main-nav, footer, .preview-controls, .nav-actions, script, #print-preview-container { display: none !important; }
-            #page-content { display: block !important; } /* Ensure original content is visible for printing */
-            .page-break-before { break-before: page; }
-            .content-block { break-inside: avoid; } /* Try to avoid breaking content blocks across pages */
+            #page-content { display: block !important; }
+            .content-block { break-inside: avoid; }
         }
 
         /* ===== PDF PREVIEW SIMULATION STYLES ===== */
@@ -233,10 +238,8 @@
         <button id="exit-preview-btn-fixed">Exit Preview</button>
     </div>
     
-    <!-- This container will hold the dynamically generated A4 pages for preview -->
     <div id="print-preview-container" style="display: none;"></div>
 
-    <!-- Original Web Page Content (used for both web view and actual printing) -->
     <div id="page-content">
         <nav class="main-nav">
             <div class="container">
@@ -248,7 +251,6 @@
             </div>
         </nav>
 
-        <!-- Page 1 Content -->
         <header class="hero content-block">
             <div class="container">
                 <div class="brand-name">XCare H5 Pro</div>
@@ -264,8 +266,7 @@
         </section>
 
         <main>
-            <!-- Page 2 Content -->
-            <section class="bg-light content-block page-break-before">
+            <section class="bg-light content-block">
                 <div class="container">
                     <h2>Preserve their independence.<br>Secure your peace of mind.</h2>
                     <p class="p-large">
@@ -309,8 +310,7 @@
                 </div>
             </section>
 
-            <!-- Page 3 Content -->
-            <section id="science" class="bg-light content-block page-break-before">
+            <section id="science" class="bg-light content-block">
                 <div class="container">
                     <div> <h2>The Science Behind the Serenity.</h2> </div>
                     <div class="science-main-grid">
@@ -415,25 +415,41 @@
         const pageContent = document.getElementById('page-content');
         const previewContainer = document.getElementById('print-preview-container');
 
-        // --- Simplified Pagination Logic ---
+        // --- Smart Pagination Logic for Compact Layout ---
         function generatePreviewPages() {
-            previewContainer.innerHTML = ''; // Clear previous preview
+            previewContainer.innerHTML = ''; 
             
+            const A4_PRINTABLE_HEIGHT_MM = 297 - 20; // A4 height minus 10mm top/bottom margins
+            const MM_TO_PX = 3.7795275591; 
+            const MAX_PAGE_HEIGHT_PX = A4_PRINTABLE_HEIGHT_MM * MM_TO_PX;
+
             const contentBlocks = pageContent.querySelectorAll('.content-block');
             
             let currentPage = createNewPage();
             let currentPageContentWrapper = currentPage.querySelector('.print-styles-container');
+            let currentHeight = 0;
 
             contentBlocks.forEach(block => {
-                // If a block is marked to start a new page, and the current page is not empty, 
-                // finalize the current page and start a new one.
-                if (block.classList.contains('page-break-before') && currentPageContentWrapper.children.length > 0) {
+                const clonedBlock = block.cloneNode(true);
+                
+                const tempDiv = document.createElement('div');
+                tempDiv.style.position = 'absolute';
+                tempDiv.style.left = '-9999px';
+                tempDiv.style.width = '190mm'; // A4 width minus 10mm left/right margins
+                tempDiv.className = 'print-styles-container'; 
+                tempDiv.appendChild(clonedBlock);
+                document.body.appendChild(tempDiv);
+                const blockHeight = tempDiv.offsetHeight;
+                document.body.removeChild(tempDiv);
+                
+                if ((currentHeight + blockHeight > MAX_PAGE_HEIGHT_PX) && currentPageContentWrapper.children.length > 0) {
                     currentPage = createNewPage();
                     currentPageContentWrapper = currentPage.querySelector('.print-styles-container');
+                    currentHeight = 0;
                 }
                 
-                const clonedBlock = block.cloneNode(true);
-                currentPageContentWrapper.appendChild(clonedBlock);
+                currentPageContentWrapper.appendChild(clonedBlock.cloneNode(true));
+                currentHeight += blockHeight;
             });
         }
 
