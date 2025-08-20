@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -347,6 +347,23 @@
             font-weight: 500;
             box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
+        
+        /* NEW: Styles for the fixed Print button */
+        #print-btn-fixed {
+            position: fixed;
+            top: 20px;
+            right: 140px; /* Position it to the left of the exit button */
+            z-index: 9999;
+            padding: 8px 16px;
+            background-color: var(--brand-primary-blue);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: var(--font-family-brand);
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
 
         /* Responsive Design */
         /* Mobile Styles */
@@ -427,7 +444,7 @@
        /* ===== A4 Print Export Styles (For actual printing) ===== */
         @media print {
           /* Hide simulation controls during actual print */
-          .nav-actions, #exit-preview-btn-fixed { display: none !important; }
+          .nav-actions, #exit-preview-btn-fixed, #print-btn-fixed { display: none !important; }
           /* ---- General Print Reset ---- */
           html, body {
             height: auto !important;
@@ -634,8 +651,9 @@
     </style>
 </head>
 <body>
-    <!-- This button is only for exiting the preview -->
+    <!-- 预览模式下的控制按钮 -->
     <button id="exit-preview-btn-fixed" style="display: none;">Exit Preview</button>
+    <button id="print-btn-fixed" style="display: none;">Print</button>
 
     <!-- Wrapper for all page content -->
     <div id="page-content">
@@ -840,16 +858,24 @@
             // Print Simulation Logic
             const simulateBtn = document.getElementById('simulate-print-btn');
             const exitBtn = document.getElementById('exit-preview-btn-fixed');
+            const printBtn = document.getElementById('print-btn-fixed'); // 新增的打印按钮
             const body = document.body;
 
             simulateBtn.addEventListener('click', () => {
                 body.classList.add('print-simulation');
                 exitBtn.style.display = 'block';
+                printBtn.style.display = 'block'; // 显示打印按钮
             });
 
             exitBtn.addEventListener('click', () => {
                 body.classList.remove('print-simulation');
                 exitBtn.style.display = 'none';
+                printBtn.style.display = 'none'; // 隐藏打印按钮
+            });
+
+            // 为新的打印按钮添加点击事件
+            printBtn.addEventListener('click', () => {
+                window.print();
             });
         });
     </script>
