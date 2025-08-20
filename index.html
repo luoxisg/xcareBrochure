@@ -441,135 +441,111 @@
             }
         }
 
-       /* ===== A4 Print Export Styles (For actual printing) ===== */
+        /* ===== A4 Print Export Styles (For actual printing) ===== */
         @media print {
-          /* Hide simulation controls during actual print */
-          .nav-actions, #exit-preview-btn-fixed, #print-btn-fixed { display: none !important; }
-          /* ---- General Print Reset ---- */
-          html, body {
-            height: auto !important;
-            overflow: visible !important;
-            background: #fff !important;
-            font-size: 9.5pt; /* Base font size for print */
-            line-height: 1.4;
-            color: #000; /* Ensure text is black for printing */
-          }
-          body { 
-            -webkit-print-color-adjust: exact; /* Force printing of background colors and images */
-            print-color-adjust: exact; 
-          }
-          /* ---- Page Setup ---- */
-          @page {
-            size: A4;
-            margin: 10mm; /* Reduce margins for a more compact layout */
-          }
-          /* ---- Reset Screen-Specific Styles ---- */
-          section {
-            padding: 2mm 0 !important; /* Drastically reduce padding to minimize whitespace */
-            overflow: visible !important;
-            margin: 0 !important;
-            box-shadow: none !important;
-            border-radius: 0 !important;
-            background-color: transparent !important; /* Remove background color */
-          }
-          .reveal-up {
-              transform: none !important;
-              opacity: 1 !important;
-              transition: none !important;
-          }
-          /* ---- Hide Unnecessary Elements ---- */
-          .main-nav, footer, .nav-button, .main-cta-button, .app-stores, script {
-              display: none !important;
-          }
-          /* ---- Print Typography ---- */
-          h1, h2, h3, p {
-            color: #000 !important; /* Set all text to black */
-            text-align: left; /* Left-align all text */
-          }
-          h1 { font-size: 22pt !important; margin-bottom: 4mm !important; }
-          h2 { font-size: 16pt !important; margin-bottom: 3mm !important; }
-          h3 { font-size: 12pt !important; margin-bottom: 1.5mm !important; }
-          p, .p-large, .p-small, .value, .param { 
-            font-size: 9.5pt !important; 
-            line-height: 1.4 !important; 
-            max-width: 100% !important;
-          }
-          /* ---- Layout Adjustments ---- */
-          .container {
-              max-width: 100% !important;
-              padding: 0 !important;
-          }
-          .hero { padding: 2mm 0 !important; }
-          #product-shot { padding: 3mm 0 !important; text-align: center; }
-          #product-shot img {
-              max-height: 55mm; /* Constrain image height */
-              width: auto;
-              margin: 0 auto;
-          }
-          .features-grid {
-              grid-template-columns: 1fr 1fr; /* Force two columns */
-              gap: 4mm 6mm !important;
-              margin-top: 3mm !important;
-          }
-          .feature-item {
-              box-shadow: none !important;
-              padding: 0 !important;
-              border-radius: 0 !important;
-              text-align: left;
-              background-color: transparent !important;
-          }
-          .feature-item .icon { font-size: 18pt !important; margin-bottom: 1.5mm !important; }
-          
-          /* ---- MODIFIED: Science Section Layout for Print ---- */
-          .science-main-grid {
-              display: flex !important;
-              gap: 8mm;
-              align-items: flex-start;
-          }
-          .science-grid, .science-grid-reverse {
-              flex: 1;
-              display: block !important;
-              margin-top: 0 !important;
-          }
-          .science-text {
-              text-align: left;
-          }
-          .science-visual img {
-              max-width: 100% !important;
-              height: auto !important;
-              display: block;
-              margin-top: 3mm;
-              box-shadow: none !important;
-              border-radius: 0 !important;
-          }
+            /* Hide simulation controls during actual print */
+            .nav-actions, #exit-preview-btn-fixed, #print-btn-fixed, .main-nav, footer, .nav-button, .main-cta-button, .app-stores, script {
+                display: none !important;
+            }
 
-          .specs-table {
-              margin-top: 4mm !important;
-              gap: 1.5mm 6mm !important;
-          }
-          /* ---- Page Break Control ---- */
-          section, .feature-item, .science-grid, .specs-table {
-            break-inside: avoid;
-          }
-          h2, h3 {
-            break-after: avoid;
-          }
-          img {
-              max-width: 100% !important;
-              height: auto !important;
-          }
-          /* ---- Show Print-Specific Footer ---- */
-          .print-footer {
-              display: block !important;
-              text-align: center;
-              margin-top: 5mm;
-              padding-top: 3mm;
-              border-top: 1px solid #ccc;
-              font-size: 8pt;
-              color: #555;
-          }
-          /* ---- Link Handling ---- */
-          a[href]:after { content: ""; } /* Do not display link URL */
+            /* ---- General Print Reset ---- */
+            html, body {
+                height: auto !important;
+                overflow: visible !important;
+                background: #fff !important;
+                font-size: 9.5pt; /* Base font size for print */
+                line-height: 1.4;
+                color: #000; /* Ensure text is black for printing */
+            }
+            body { 
+                -webkit-print-color-adjust: exact; /* Force printing of background colors and images */
+                print-color-adjust: exact; 
+            }
+
+            /* ---- Page Setup ---- */
+            @page {
+                size: A4;
+                margin: 10mm; /* This creates the page margin */
+            }
+
+            /* ---- UNIFIED STYLES (to match print-simulation) ---- */
+            section {
+                padding-top: 2mm !important;
+                padding-bottom: 2mm !important;
+                overflow: visible !important;
+                margin: 0 !important;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                background-color: transparent !important;
+            }
+            .container {
+                max-width: 100% !important;
+                padding: 0 !important; /* Margins are handled by @page */
+            }
+            .reveal-up {
+                transform: none !important; opacity: 1 !important; transition: none !important;
+            }
+            h1, h2, h3, p {
+                color: #000 !important; text-align: left;
+            }
+            h1 { font-size: 22pt !important; margin-bottom: 4mm !important; }
+            h2 { font-size: 16pt !important; margin-bottom: 3mm !important; }
+            h3 { font-size: 12pt !important; margin-bottom: 1.5mm !important; }
+            p, .p-large, .p-small, .value, .param { 
+                font-size: 9.5pt !important; line-height: 1.4 !important; max-width: 100% !important;
+            }
+            .hero { padding: 2mm 0 !important; }
+            #product-shot { padding: 3mm 0 !important; text-align: center; }
+            #product-shot img { max-height: 55mm; width: auto; margin: 0 auto; }
+            .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm 6mm !important; margin-top: 3mm !important; }
+            .feature-item { box-shadow: none !important; padding: 0 !important; border-radius: 0 !important; text-align: left; background-color: transparent !important; }
+            .feature-item .icon { font-size: 18pt !important; margin-bottom: 1.5mm !important; }
+            
+            .science-main-grid {
+                display: flex !important;
+                gap: 8mm;
+                align-items: flex-start;
+            }
+            .science-grid, .science-grid-reverse {
+                flex: 1;
+                display: block !important;
+                margin-top: 0 !important;
+            }
+            .science-text {
+                text-align: left;
+            }
+            .science-visual img {
+                max-width: 100% !important;
+                height: auto !important;
+                display: block;
+                margin-top: 3mm;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+            }
+
+            .specs-table { display: grid; margin-top: 4mm !important; gap: 1.5mm 6mm !important; }
+            .print-footer { 
+                display: block !important; 
+                text-align: center; 
+                margin-top: 5mm; 
+                padding: 3mm 0 0 0; 
+                border-top: 1px solid #ccc; 
+                font-size: 8pt; 
+                color: #555; 
+            }
+            a[href]:after { content: ""; }
+
+            /* ---- Page Break Control ---- */
+            section, .feature-item, .science-grid, .specs-table {
+                break-inside: avoid;
+            }
+            h2, h3 {
+                break-after: avoid;
+            }
+            img {
+                max-width: 100% !important;
+                height: auto !important;
+            }
         }
 
         /* ===== PDF Print Simulation Styles ===== */
@@ -645,7 +621,15 @@
         }
 
         .print-simulation .specs-table { display: grid; margin-top: 4mm !important; gap: 1.5mm 6mm !important; }
-        .print-simulation .print-footer { display: block !important; text-align: center; margin-top: 5mm; padding: 3mm 10mm 0 10mm; border-top: 1px solid #ccc; font-size: 8pt; color: #555; }
+        .print-simulation .print-footer { 
+            display: block !important; 
+            text-align: center; 
+            margin-top: 5mm; 
+            padding: 3mm 10mm 0 10mm; 
+            border-top: 1px solid #ccc; 
+            font-size: 8pt; 
+            color: #555; 
+        }
         .print-simulation a[href]:after { content: ""; }
 
     </style>
