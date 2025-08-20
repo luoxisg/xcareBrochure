@@ -195,9 +195,10 @@
         @media print {
             @page { size: A4; margin: 10mm; }
             body { background: #fff !important; }
-            .main-nav, footer, .preview-controls, .nav-actions, script { display: none !important; }
+            .main-nav, footer, .preview-controls, .nav-actions, script, #print-preview-container { display: none !important; }
+            #page-content { display: block !important; } /* Ensure original content is visible for printing */
             .page-break-before { break-before: page; }
-            .print-footer { position: fixed; bottom: 0; width: 100%; } /* Make footer stick to bottom of each page */
+            .content-block { break-inside: avoid; } /* Try to avoid breaking content blocks across pages */
         }
 
         /* ===== PDF PREVIEW SIMULATION STYLES ===== */
@@ -215,8 +216,7 @@
         .simulated-page {
             background: white;
             width: 210mm;
-            min-height: 297mm;
-            height: fit-content;
+            height: 297mm; /* Fixed height for accurate simulation */
             margin: 0 auto 20px auto;
             padding: 10mm;
             box-sizing: border-box;
@@ -236,7 +236,7 @@
     <!-- This container will hold the dynamically generated A4 pages for preview -->
     <div id="print-preview-container" style="display: none;"></div>
 
-    <!-- Original Web Page Content -->
+    <!-- Original Web Page Content (used for both web view and actual printing) -->
     <div id="page-content">
         <nav class="main-nav">
             <div class="container">
@@ -412,26 +412,50 @@
         const pageContent = document.getElementById('page-content');
         const previewContainer = document.getElementById('print-preview-container');
 
-        const A4_HEIGHT_PX = 1122; // Approximate height of A4 at 96 DPI
-
+        // --- NEW: Smart Pagination Logic ---
         function generatePreviewPages() {
             previewContainer.innerHTML = ''; // Clear previous preview
+            
+            // A4 paper height in mm minus top/bottom margins (10mm each)
+            const A4_PRINTABLE_HEIGHT_MM = 297 - 20;
+            // Convert mm to pixels (this is an approximation)
+            const MM_TO_PX = 3.7795275591; 
+            const MAX_PAGE_HEIGHT_PX = A4_PRINTABLE_HEIGHT_MM * MM_TO_PX;
+
             const contentBlocks = pageContent.querySelectorAll('.content-block');
             
             let currentPage = createNewPage();
             let currentPageContentWrapper = currentPage.querySelector('.print-styles-container');
+            let currentHeight = 0;
 
             contentBlocks.forEach(block => {
-                // If a block is marked to start a new page, and the current page is not empty, finalize the current page and start a new one.
-                if (block.classList.contains('page-break-before') && currentPageContentWrapper.children.length > 0) {
+                const clonedBlock = block.cloneNode(true);
+                
+                // To measure height accurately, we must render it invisibly
+                const tempDiv = document.createElement('div');
+                tempDiv.style.position = 'absolute';
+                tempDiv.style.left = '-9999px';
+                tempDiv.style.width = '190mm'; // A4 width minus margins
+                tempDiv.className = 'print-styles-container'; // Apply print styles for accurate measurement
+                tempDiv.appendChild(clonedBlock);
+                document.body.appendChild(tempDiv);
+                const blockHeight = tempDiv.offsetHeight;
+                document.body.removeChild(tempDiv);
+
+                const isManualBreak = block.classList.contains('page-break-before');
+                const willOverflow = (currentHeight + blockHeight > MAX_PAGE_HEIGHT_PX);
+                
+                // Start a new page if:
+                // 1. A manual break is forced AND the current page is not empty.
+                // 2. The block will overflow the page AND the current page is not empty.
+                if ((isManualBreak || willOverflow) && currentPageContentWrapper.children.length > 0) {
                     currentPage = createNewPage();
                     currentPageContentWrapper = currentPage.querySelector('.print-styles-container');
+                    currentHeight = 0;
                 }
                 
-                const clonedBlock = block.cloneNode(true);
-                // Remove the page-break class from the clone to avoid layout shifts in the preview
-                clonedBlock.classList.remove('page-break-before');
                 currentPageContentWrapper.appendChild(clonedBlock);
+                currentHeight += blockHeight;
             });
         }
 
@@ -439,7 +463,6 @@
             const page = document.createElement('div');
             page.className = 'simulated-page';
             
-            // Add a wrapper inside the page that will have the print styles applied
             const contentWrapper = document.createElement('div');
             contentWrapper.className = 'print-styles-container';
             page.appendChild(contentWrapper);
