@@ -39,7 +39,7 @@
             box-sizing: border-box;
         }
 
-        section {
+        section, header {
             padding: 96px 0;
             text-align: center;
             overflow: hidden;
@@ -55,21 +55,9 @@
             letter-spacing: -0.005em;
         }
 
-        h1 {
-            font-size: 56px;
-            margin-bottom: 16px;
-        }
-
-        h2 {
-            font-size: 48px;
-            margin-bottom: 24px;
-        }
-
-        h3 {
-            font-size: 24px;
-            margin-bottom: 12px;
-            color: var(--text-color-primary);
-        }
+        h1 { font-size: 56px; margin-bottom: 16px; }
+        h2 { font-size: 48px; margin-bottom: 24px; }
+        h3 { font-size: 24px; margin-bottom: 12px; color: var(--text-color-primary); }
 
         p {
             font-size: 21px;
@@ -80,572 +68,179 @@
             font-weight: 400;
         }
         
-        .p-large {
-            font-size: 24px;
-            max-width: 800px;
-            line-height: 1.5;
-        }
-        
-        .p-small {
-            font-size: 17px;
-            line-height: 1.5;
-        }
+        .p-large { font-size: 24px; max-width: 800px; line-height: 1.5; }
+        .p-small { font-size: 17px; line-height: 1.5; }
 
         /* Animation */
-        .reveal-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .reveal-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .reveal-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .reveal-up.visible { opacity: 1; transform: translateY(0); }
 
         /* Header Navigation */
         .main-nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            position: fixed; top: 0; left: 0; right: 0;
             background-color: rgba(255, 255, 255, 0.8);
             backdrop-filter: saturate(180%) blur(20px);
             -webkit-backdrop-filter: saturate(180%) blur(20px);
-            z-index: 100;
-            transition: all 0.3s ease-in-out;
+            z-index: 100; transition: all 0.3s ease-in-out;
         }
-        
-        .main-nav .container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 52px;
-        }
-        
-        .nav-logo {
-            font-weight: 700;
-            font-size: 20px;
-            text-decoration: none;
-            color: var(--text-color-primary);
-        }
-        
-        /* Styles for the action buttons container */
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
+        .main-nav .container { display: flex; align-items: center; justify-content: space-between; height: 52px; }
+        .nav-logo { font-weight: 700; font-size: 20px; text-decoration: none; color: var(--text-color-primary); }
+        .nav-actions { display: flex; align-items: center; gap: 15px; }
         .nav-button, .nav-actions button {
-            display: inline-block;
-            text-decoration: none;
-            padding: 6px 16px;
-            border-radius: 980px;
-            font-size: 14px;
-            font-weight: 500;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            white-space: nowrap;
+            display: inline-block; text-decoration: none; padding: 6px 16px; border-radius: 980px;
+            font-size: 14px; font-weight: 500; border: none; cursor: pointer;
+            transition: background-color 0.3s; white-space: nowrap;
         }
-
-        .nav-button {
-            background-color: var(--accent-color);
-            color: #fff;
-        }
-        .nav-button:hover {
-            background-color: #a58829; /* Darker gold on hover */
-        }
-        
-        #simulate-print-btn {
-            background-color: var(--brand-primary-blue);
-            color: white;
-        }
-        #simulate-print-btn:hover {
-            background-color: #1e2050;
-        }
+        .nav-button { background-color: var(--accent-color); color: #fff; }
+        .nav-button:hover { background-color: #a58829; }
+        #simulate-print-btn { background-color: var(--brand-primary-blue); color: white; }
+        #simulate-print-btn:hover { background-color: #1e2050; }
         
         /* Hero Section */
-        .hero {
-            padding-top: 120px; 
-            padding-bottom: 64px;
-            text-align: center;
-        }
-
-        .hero .brand-name {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--accent-color);
-            margin-bottom: 8px;
-        }
+        .hero { padding-top: 120px; padding-bottom: 64px; text-align: center; }
+        .hero .brand-name { font-size: 24px; font-weight: 700; color: var(--accent-color); margin-bottom: 8px; }
 
         /* Product Shot Section */
-        #product-shot {
-            padding-top: 0;
-            padding-bottom: 96px;
-            background-color: var(--bg-color-white);
-        }
-        #product-shot img {
-            max-width: 450px;
-            width: 100%;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-        }
-
+        #product-shot { padding-top: 0; padding-bottom: 96px; background-color: var(--bg-color-white); }
+        #product-shot img { max-width: 450px; width: 100%; height: auto; display: block; margin: 0 auto; }
 
         /* Features Section */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 64px;
-        }
-        
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 64px; }
         .feature-item {
-            background-color: var(--bg-color-white);
-            padding: 32px;
-            border-radius: 16px;
-            text-align: center;
+            background-color: var(--bg-color-white); padding: 32px; border-radius: 16px; text-align: center;
             box-shadow: 0 4px 6px -2px rgba(0,0,0,0.05), 0 10px 15px -3px rgba(0,0,0,0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        
-        .feature-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.05);
-        }
-
-        .feature-item .icon {
-            font-size: 40px;
-            margin-bottom: 16px;
-            color: var(--accent-color);
-        }
+        .feature-item:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.05); }
+        .feature-item .icon { font-size: 40px; margin-bottom: 16px; color: var(--accent-color); }
 
         /* Science Section */
-        .science-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 64px;
-            align-items: center;
-            margin-top: 64px;
-            text-align: left;
-        }
-        
-        .science-visual img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
+        .science-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-top: 64px; text-align: left; }
+        .science-visual img { max-width: 100%; height: auto; border-radius: 16px; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
         
         /* Specs Section */
         .specs-table {
-            display: grid;
-            grid-template-columns: max-content 1fr;
-            gap: 16px 40px;
-            max-width: 650px;
-            margin: 60px auto 0 auto;
-            text-align: left;
-            font-size: 19px;
+            display: grid; grid-template-columns: max-content 1fr; gap: 16px 40px; max-width: 650px;
+            margin: 60px auto 0 auto; text-align: left; font-size: 19px;
         }
-
-        .specs-table .param {
-            font-weight: 600;
-            color: var(--text-color-primary);
-        }
-
-        .specs-table .value {
-            color: var(--text-color-secondary);
-        }
+        .specs-table .param { font-weight: 600; color: var(--text-color-primary); }
+        .specs-table .value { color: var(--text-color-secondary); }
         
-        /* Ecosystem Section */
-        .ecosystem-visual {
-            margin-top: 60px;
-        }
-        
-        .ecosystem-visual img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        /* Footer CTA */
-        footer {
-            background-color: var(--brand-primary-blue);
-            color: #fff;
-            padding: 80px 0;
-        }
-
-        footer h2, footer p {
-            color: #fff;
-        }
-        
+        /* Footer & CTA */
+        footer { background-color: var(--brand-primary-blue); color: #fff; padding: 80px 0; }
+        footer h2, footer p { color: #fff; }
         .main-cta-button {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: #fff;
-            padding: 16px 32px;
-            border-radius: 980px;
-            text-decoration: none;
-            font-size: 17px;
-            font-weight: 600;
-            margin-top: 20px;
-            transition: background-color 0.3s;
+            display: inline-block; background-color: var(--accent-color); color: #fff; padding: 16px 32px;
+            border-radius: 980px; text-decoration: none; font-size: 17px; font-weight: 600;
+            margin-top: 20px; transition: background-color 0.3s;
         }
-
-        .main-cta-button:hover {
-            background-color: #a58829;
-        }
-
-        .app-stores {
-            margin-top: 40px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .app-stores img {
-            height: 40px;
-        }
-        
-        .footer-nav {
-            margin-top: 60px;
-            font-size: 12px;
-            color: #a1a1a6;
-        }
-        
-        .footer-nav a {
-            color: #a1a1a6;
-            text-decoration: none;
-            margin: 0 10px;
-            transition: color 0.3s;
-        }
-        
-        .footer-nav a:hover {
-            color: #fff;
-        }
+        .main-cta-button:hover { background-color: #a58829; }
+        .app-stores { margin-top: 40px; display: flex; justify-content: center; gap: 20px; }
+        .app-stores img { height: 40px; }
+        .footer-nav { margin-top: 60px; font-size: 12px; color: #a1a1a6; }
+        .footer-nav a { color: #a1a1a6; text-decoration: none; margin: 0 10px; transition: color 0.3s; }
+        .footer-nav a:hover { color: #fff; }
         
         /* Print-specific footer */
-        .print-footer {
-            display: none; /* Hidden by default */
-        }
+        .print-footer { display: none; }
 
-        /* Styles for the fixed Exit Preview button */
-        #exit-preview-btn-fixed {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 9999;
-            padding: 8px 16px;
-            background-color: var(--brand-primary-gold);
-            color: white;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            font-family: var(--font-family-brand);
-            font-weight: 500;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        /* Preview Control Buttons */
+        .preview-controls { display: none; position: fixed; top: 15px; right: 20px; z-index: 10001; }
+        .preview-controls button {
+            margin-left: 10px; padding: 8px 16px; border: none; border-radius: 20px;
+            font-family: var(--font-family-brand); font-weight: 500;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2); cursor: pointer;
         }
-        
-        /* NEW: Styles for the fixed Print button */
-        #print-btn-fixed {
-            position: fixed;
-            top: 20px;
-            right: 140px; /* Position it to the left of the exit button */
-            z-index: 9999;
-            padding: 8px 16px;
-            background-color: var(--brand-primary-blue);
-            color: white;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            font-family: var(--font-family-brand);
-            font-weight: 500;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-        }
+        #print-btn-fixed { background-color: var(--brand-primary-blue); color: white; }
+        #exit-preview-btn-fixed { background-color: var(--brand-primary-gold); color: white; }
 
         /* Responsive Design */
-        /* Mobile Styles */
         @media (max-width: 768px) {
-            .container {
-                padding: 0 15px;
-            }
-            h1 { font-size: 38px; }
-            h2 { font-size: 32px; }
-            p { font-size: 18px; }
-            section { padding: 64px 0; }
-            
-            .hero {
-                padding-top: 100px;
-                padding-bottom: 40px;
-            }
-            
-            .nav-actions {
-                gap: 8px;
-            }
-            .nav-button, .nav-actions button {
-                padding: 5px 12px;
-                font-size: 12px;
-            }
-
-            .science-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .science-text, .science-visual {
-                text-align: center;
-            }
-            
-            .science-grid-reverse .science-visual {
-                grid-row: 1; /* Ensure image is first on mobile */
-            }
-            
-            .specs-table {
-                grid-template-columns: 1fr 1.5fr; /* Adjust column ratio for mobile */
-                gap: 12px 15px;
-                font-size: 16px;
-            }
-            .specs-table .param {
-                font-weight: 600;
-                text-align: left;
-            }
-            .specs-table .value {
-                 text-align: left;
-            }
-            .feature-item {
-                padding: 24px;
-            }
-        }
-        
-        /* PC (Wider Screen) Styles */
-        @media (min-width: 1024px) {
-            .container {
-                max-width: 1280px;
-            }
-            p, .p-large {
-                max-width: 820px;
-            }
-            .specs-table {
-                max-width: 750px;
-            }
-        }
-        
-        @media (min-width: 769px) {
-            .science-grid-reverse .science-visual {
-                grid-column: 1;
-            }
-            .science-grid-reverse .science-text {
-                grid-column: 2;
-            }
+            h1 { font-size: 38px; } h2 { font-size: 32px; } p { font-size: 18px; }
+            section, header { padding: 64px 0; }
+            .hero { padding-top: 100px; padding-bottom: 40px; }
+            .science-grid { grid-template-columns: 1fr; text-align: center; }
+            .science-text, .science-visual { text-align: center; }
+            .science-grid-reverse .science-visual { grid-row: 1; }
+            .specs-table { grid-template-columns: 1fr 1.5fr; gap: 12px 15px; font-size: 16px; }
         }
 
-        /* ===== A4 Print Export Styles (For actual printing) ===== */
-        @media print {
-            /* Hide simulation controls during actual print */
-            .nav-actions, #exit-preview-btn-fixed, #print-btn-fixed, .main-nav, footer, .nav-button, .main-cta-button, .app-stores, script {
-                display: none !important;
-            }
-
-            /* ---- General Print Reset ---- */
-            html, body {
-                height: auto !important;
-                overflow: visible !important;
-                background: #fff !important;
-                font-size: 9.5pt; /* Base font size for print */
-                line-height: 1.4;
-                color: #000; /* Ensure text is black for printing */
-            }
-            body { 
-                -webkit-print-color-adjust: exact; /* Force printing of background colors and images */
-                print-color-adjust: exact; 
-            }
-
-            /* ---- Page Setup ---- */
-            @page {
-                size: A4;
-                margin: 10mm; /* This creates the page margin */
-            }
-
-            /* ---- UNIFIED STYLES (to match print-simulation) ---- */
-            section {
-                padding-top: 2mm !important;
-                padding-bottom: 2mm !important;
-                overflow: visible !important;
-                margin: 0 !important;
-                box-shadow: none !important;
-                border-radius: 0 !important;
-                background-color: transparent !important;
-            }
-            .container {
-                max-width: 100% !important;
-                padding: 0 !important; /* Margins are handled by @page */
-            }
-            .reveal-up {
-                transform: none !important; opacity: 1 !important; transition: none !important;
-            }
-            h1, h2, h3, p {
-                color: #000 !important; text-align: left;
-            }
+        /* ===== UNIFIED PRINT & PREVIEW STYLES ===== */
+        .print-styles-container, @media print {
+            h1, h2, h3, p, .value, .param { color: #000 !important; text-align: left; }
             h1 { font-size: 22pt !important; margin-bottom: 4mm !important; }
             h2 { font-size: 16pt !important; margin-bottom: 3mm !important; }
             h3 { font-size: 12pt !important; margin-bottom: 1.5mm !important; }
-            p, .p-large, .p-small, .value, .param { 
-                font-size: 9.5pt !important; line-height: 1.4 !important; max-width: 100% !important;
-            }
-            .hero { padding: 2mm 0 !important; }
+            p, .p-large, .p-small, .value, .param { font-size: 9.5pt !important; line-height: 1.4 !important; max-width: 100% !important; }
+            
+            section, header { padding: 2mm 0 !important; overflow: visible !important; margin: 0 !important; box-shadow: none !important; border-radius: 0 !important; background: transparent !important; }
+            .container { max-width: 100% !important; padding: 0 !important; }
+            .reveal-up { transform: none !important; opacity: 1 !important; transition: none !important; }
+            
             #product-shot { padding: 3mm 0 !important; text-align: center; }
             #product-shot img { max-height: 55mm; width: auto; margin: 0 auto; }
             .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm 6mm !important; margin-top: 3mm !important; }
-            .feature-item { box-shadow: none !important; padding: 0 !important; border-radius: 0 !important; text-align: left; background-color: transparent !important; }
+            .feature-item { box-shadow: none !important; padding: 0 !important; border-radius: 0 !important; text-align: left; background: transparent !important; }
             .feature-item .icon { font-size: 18pt !important; margin-bottom: 1.5mm !important; }
             
-            .science-main-grid {
-                display: flex !important;
-                gap: 8mm;
-                align-items: flex-start;
-            }
-            .science-grid, .science-grid-reverse {
-                flex: 1;
-                display: block !important;
-                margin-top: 0 !important;
-            }
-            .science-text {
-                text-align: left;
-            }
-            .science-visual img {
-                max-width: 100% !important;
-                height: auto !important;
-                display: block;
-                margin-top: 3mm;
-                box-shadow: none !important;
-                border-radius: 0 !important;
-            }
-
+            .science-main-grid { display: flex !important; gap: 8mm; align-items: flex-start; }
+            .science-grid, .science-grid-reverse { flex: 1; display: block !important; margin-top: 0 !important; }
+            .science-visual img { box-shadow: none !important; border-radius: 0 !important; }
             .specs-table { display: grid; margin-top: 4mm !important; gap: 1.5mm 6mm !important; }
-            .print-footer { 
-                display: block !important; 
-                text-align: center; 
-                margin-top: 5mm; 
-                padding: 3mm 0 0 0; 
-                border-top: 1px solid #ccc; 
-                font-size: 8pt; 
-                color: #555; 
-            }
-            a[href]:after { content: ""; }
-
-            /* ---- Page Break Control ---- */
-            section, .feature-item, .science-grid, .specs-table {
-                break-inside: avoid;
-            }
-            h2, h3 {
-                break-after: avoid;
-            }
-            img {
-                max-width: 100% !important;
-                height: auto !important;
-            }
+            .print-footer { display: block !important; text-align: center; margin-top: 5mm; padding-top: 3mm; border-top: 1px solid #ccc; font-size: 8pt; color: #555; }
+            img { max-width: 100% !important; height: auto !important; }
+        }
+        
+        /* ===== A4 PRINT SPECIFIC STYLES ===== */
+        @media print {
+            @page { size: A4; margin: 10mm; }
+            body { background: #fff !important; }
+            .main-nav, footer, .preview-controls, .nav-actions, script { display: none !important; }
+            .page-break-before { break-before: page; }
+            .print-footer { position: fixed; bottom: 0; width: 100%; } /* Make footer stick to bottom of each page */
         }
 
-        /* ===== PDF Print Simulation Styles ===== */
-        .print-simulation {
+        /* ===== PDF PREVIEW SIMULATION STYLES ===== */
+        body.print-simulation {
             background: #525659 !important;
             -webkit-font-smoothing: auto;
             -moz-osx-font-smoothing: auto;
+        }
+        #print-preview-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             padding: 20px 0;
         }
-        .print-simulation #page-content {
-            max-width: 210mm;
-            margin: 0 auto;
+        .simulated-page {
             background: white;
+            width: 210mm;
+            min-height: 297mm;
+            height: fit-content;
+            margin: 0 auto 20px auto;
+            padding: 10mm;
+            box-sizing: border-box;
             box-shadow: 0 0 15px rgba(0,0,0,0.5);
+            overflow: hidden;
+            position: relative;
         }
-        .print-simulation .main-nav,
-        .print-simulation footer {
-            display: none !important;
-        }
-        .print-simulation #page-content > * {
-            /* Apply print styles to the content inside the simulated page */
-            padding-top: 2mm !important; 
-            padding-bottom: 2mm !important;
-            overflow: visible !important;
-            margin: 0 !important;
-            box-shadow: none !important;
-            border-radius: 0 !important;
-            background-color: transparent !important;
-        }
-        .print-simulation #page-content .container {
-             max-width: 100% !important;
-             padding: 0 10mm !important;
-        }
-        .print-simulation .reveal-up {
-            transform: none !important; opacity: 1 !important; transition: none !important;
-        }
-        .print-simulation h1, .print-simulation h2, .print-simulation h3, .print-simulation p {
-            color: #000 !important; text-align: left;
-        }
-        .print-simulation h1 { font-size: 22pt !important; margin-bottom: 4mm !important; }
-        .print-simulation h2 { font-size: 16pt !important; margin-bottom: 3mm !important; }
-        .print-simulation h3 { font-size: 12pt !important; margin-bottom: 1.5mm !important; }
-        .print-simulation p, .print-simulation .p-large, .print-simulation .p-small, .print-simulation .value, .print-simulation .param { 
-            font-size: 9.5pt !important; line-height: 1.4 !important; max-width: 100% !important;
-        }
-        .print-simulation .hero { padding: 2mm 0 !important; }
-        .print-simulation #product-shot { padding: 3mm 0 !important; text-align: center; }
-        .print-simulation #product-shot img { max-height: 55mm; width: auto; margin: 0 auto; }
-        .print-simulation .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm 6mm !important; margin-top: 3mm !important; }
-        .print-simulation .feature-item { box-shadow: none !important; padding: 0 !important; border-radius: 0 !important; text-align: left; background-color: transparent !important; }
-        .print-simulation .feature-item .icon { font-size: 18pt !important; margin-bottom: 1.5mm !important; }
-        
-        .print-simulation .science-main-grid {
-            display: flex !important;
-            gap: 8mm;
-            align-items: flex-start;
-        }
-        .print-simulation .science-grid, .print-simulation .science-grid-reverse {
-            flex: 1;
-            display: block !important;
-            margin-top: 0 !important;
-        }
-        .print-simulation .science-text {
-            text-align: left;
-        }
-        .print-simulation .science-visual img {
-            max-width: 100% !important;
-            height: auto !important;
-            display: block;
-            margin-top: 3mm;
-            box-shadow: none !important;
-            border-radius: 0 !important;
-        }
-
-        .print-simulation .specs-table { display: grid; margin-top: 4mm !important; gap: 1.5mm 6mm !important; }
-        .print-simulation .print-footer { 
-            display: block !important; 
-            text-align: center; 
-            margin-top: 5mm; 
-            padding: 3mm 10mm 0 10mm; 
-            border-top: 1px solid #ccc; 
-            font-size: 8pt; 
-            color: #555; 
-        }
-        .print-simulation a[href]:after { content: ""; }
-
     </style>
 </head>
 <body>
-    <!-- 预览模式下的控制按钮 -->
-    <button id="exit-preview-btn-fixed" style="display: none;">Exit Preview</button>
-    <button id="print-btn-fixed" style="display: none;">Print</button>
+    <!-- Preview Control Buttons -->
+    <div class="preview-controls">
+        <button id="print-btn-fixed">Print</button>
+        <button id="exit-preview-btn-fixed">Exit Preview</button>
+    </div>
+    
+    <!-- This container will hold the dynamically generated A4 pages for preview -->
+    <div id="print-preview-container" style="display: none;"></div>
 
-    <!-- Wrapper for all page content -->
+    <!-- Original Web Page Content -->
     <div id="page-content">
-        <!-- Navigation Bar -->
         <nav class="main-nav">
             <div class="container">
                 <a href="#" class="nav-logo">XCare</a>
-                <!-- Container for all action buttons -->
                 <div class="nav-actions">
                     <a href="#footer-cta" class="nav-button">Order Now</a>
                     <button id="simulate-print-btn">Simulate PDF Print</button>
@@ -653,26 +248,23 @@
             </div>
         </nav>
 
-        <!-- Hero Section -->
-        <header class="hero">
-            <div class="container reveal-up">
+        <header class="hero content-block">
+            <div class="container">
                 <div class="brand-name">XCare H5 Pro</div>
                 <h1>The Unseen Guardian.</h1>
                 <p class="p-large">Non-Contact mmWave Vital Signs Radar. Continuously and non-intrusively watch over the well-being of your loved ones.</p>
             </div>
         </header>
         
-        <!-- Product Shot -->
-        <section id="product-shot">
-            <div class="container reveal-up">
+        <section id="product-shot" class="content-block">
+            <div class="container">
                 <img src="image/product.jpg" alt="The XCare H5 Pro device" onerror="this.onerror=null;this.src='https://placehold.co/450x450/f5f5f7/27296A?text=XCare+H5+Pro';">
             </div>
         </section>
 
         <main>
-            <!-- Introduction -->
-            <section class="bg-light">
-                <div class="container reveal-up">
+            <section class="bg-light content-block page-break-before">
+                <div class="container">
                     <h2>Preserve their independence.<br>Secure your peace of mind.</h2>
                     <p class="p-large">
                         XCare is designed to be invisible, safeguarding the independence and dignity of your elders. It operates silently in the background, ensuring that help is always on standby when needed. No intrusive cameras, no wearables required. Just life, continuing with freedom and safety.
@@ -680,71 +272,59 @@
                 </div>
             </section>
 
-            <!-- Features -->
-            <section id="features" class="bg-light">
+            <section id="features" class="bg-light content-block">
                 <div class="container">
-                    <div class="reveal-up">
+                    <div>
                         <h2>Intelligence that Cares.</h2>
                         <p>The XCare H5 Pro is packed with powerful, thoughtful features designed to provide a complete circle of protection and peace of mind.</p>
                     </div>
                     <div class="features-grid">
-                        <div class="feature-item reveal-up" style="transition-delay: 0.1s;">
-                            <div class="icon">❤️</div>
-                            <h3>Health Monitoring Sensor</h3>
+                        <div class="feature-item">
+                            <div class="icon">❤️</div> <h3>Health Monitoring Sensor</h3>
                             <p class="p-small">Precisely tracks key vitals like heart rate and respiration, providing a clear window into their ongoing health status.</p>
                         </div>
-                        <div class="feature-item reveal-up" style="transition-delay: 0.2s;">
-                            <div class="icon">🚶</div>
-                            <h3>Presence Detection</h3>
+                        <div class="feature-item">
+                            <div class="icon">🚶</div> <h3>Presence Detection</h3>
                             <p class="p-small">Offers non-contact indoor monitoring of position and activity with customizable zones and real-time tracking.</p>
                         </div>
-                        <div class="feature-item reveal-up" style="transition-delay: 0.3s;">
-                            <div class="icon">📡</div>
-                            <h3>Wi-Fi & 4G Alerts</h3>
+                        <div class="feature-item">
+                            <div class="icon">📡</div> <h3>Wi-Fi & 4G Alerts</h3>
                             <p class="p-small">Ensures that critical alerts are sent reliably, with dual connectivity options that keep you informed, no matter what.</p>
                         </div>
-                        <div class="feature-item reveal-up" style="transition-delay: 0.4s;">
-                            <div class="icon">🛡️</div>
-                            <h3>Private AI Protection</h3>
+                        <div class="feature-item">
+                            <div class="icon">🛡️</div> <h3>Private AI Protection</h3>
                             <p class="p-small">All sensitive data is processed on the device. Nothing is sent to the cloud, ensuring total privacy and security.</p>
                         </div>
-                        <div class="feature-item reveal-up" style="transition-delay: 0.5s;">
-                            <div class="icon">🔄</div>
-                            <h3>Automatic Updates</h3>
+                        <div class="feature-item">
+                            <div class="icon">🔄</div> <h3>Automatic Updates</h3>
                             <p class="p-small">The device software updates automatically, continuously improving with new features and enhanced performance.</p>
                         </div>
-                        <div class="feature-item reveal-up" style="transition-delay: 0.6s;">
-                            <div class="icon">🎙️</div>
-                            <h3>Voice Intercom</h3>
+                        <div class="feature-item">
+                            <div class="icon">🎙️</div> <h3>Voice Intercom</h3>
                             <p class="p-small">Speak directly through the device. Offer a reassuring word or provide guidance from anywhere, right when it's needed.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Science -->
-            <section id="science" class="bg-light">
+            <section id="science" class="bg-light content-block page-break-before">
                 <div class="container">
-                    <div class="reveal-up">
-                        <h2>The Science Behind the Serenity.</h2>
-                    </div>
+                    <div> <h2>The Science Behind the Serenity.</h2> </div>
                     <div class="science-main-grid">
-                        <!-- Row 1: Text Left, Image Right -->
                         <div class="science-grid">
-                            <div class="science-text reveal-up">
+                            <div class="science-text">
                                 <h3>Seeing the Invisible</h3>
                                 <p class="p-small" style="max-width: 100%;">XCare utilizes advanced 60 GHz millimeter-wave technology. Unlike a camera, it perceives the space using safe, low-power radio waves. It can accurately detect the most subtle vital signs, like the rise and fall of a chest or a heartbeat, even through blankets or in complete darkness.</p>
                             </div>
-                            <div class="science-visual reveal-up">
+                            <div class="science-visual">
                                 <img src="image/usecase.png" alt="Millimeter-Wave Sensing Animation" onerror="this.onerror=null;this.src='https://placehold.co/400x300/e0e0e0/999?text=Usecase+Visual';">
                             </div>
                         </div>
-                        <!-- Row 2: Image Left, Text Right -->
                         <div class="science-grid science-grid-reverse">
-                             <div class="science-visual reveal-up">
+                             <div class="science-visual">
                                 <img src="image/screen.jpg" alt="Health Monitor App Interface" style="max-width: 70%; height: auto; display: block; margin: 0 auto;" onerror="this.onerror=null;this.src='https://placehold.co/300x500/e0e0e0/999?text=App+Screen';">
                             </div>
-                            <div class="science-text reveal-up">
+                            <div class="science-text">
                                 <h3>On-Device Intelligence</h3>
                                 <p class="p-small" style="max-width: 100%;">Your family's privacy is paramount. That's why all sensitive data is analyzed locally on XCare's dedicated AI processor. Alerts are only sent when an emergency is detected. No images are ever captured, and no raw health data is stored in the cloud.</p>
                             </div>
@@ -753,9 +333,8 @@
                 </div>
             </section>
             
-            <!-- Specs -->
-            <section id="specs" class="page-break-before">
-                <div class="container reveal-up">
+            <section id="specs" class="content-block page-break-before">
+                <div class="container">
                     <h2>Meticulously Crafted for the Home and Nursing Home.</h2>
                     <p>Every detail of XCare is designed to blend into the home environment, ensuring exceptional performance and simple installation for silent, unobtrusive protection.</p>
                     <div class="specs-table">
@@ -772,18 +351,16 @@
                 </div>
             </section>
 
-            <!-- Ecosystem -->
-            <section id="ecosystem">
-                <div class="container reveal-up">
+            <section id="ecosystem" class="content-block">
+                <div class="container">
                     <h2>A Complete Circle of Care.</h2>
                     <p>XCare is more than a device; it's a connected ecosystem. You can view real-time vital signs and historical trends through the XCare App. When the system detects an anomaly, you receive immediate alerts via the app, SMS, or a phone call. Plus, with two-way voice intercom, you can speak directly through the device to offer comfort or instructions. True peace of mind, right at your fingertips.</p>
                 </div>
             </section>
         </main>
 
-        <!-- Web Footer -->
         <footer id="footer-cta">
-            <div class="container reveal-up">
+            <div class="container">
                 <h2>Bring Peace of Mind, from Home to Nursing Home</h2>
                 <p>Ready to add a layer of unseen protection for your beloved family?</p>
                 <a href="mailto:enquiry@xjeralabs.com" class="main-cta-button">Email Us: enquiry@xjeralabs.com</a>
@@ -792,76 +369,105 @@
                     <a href="#"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play"></a>
                 </div>
                 <div class="footer-nav">
-                    <a href="#">Support</a> |
-                    <a href="#">Privacy Policy</a> |
-                    <a href="mailto:enquiry@xjeralabs.com">Contact Us</a>
+                    <a href="#">Support</a> | <a href="#">Privacy Policy</a> | <a href="mailto:enquiry@xjeralabs.com">Contact Us</a>
                      <p style="font-size: 12px; color: #a1a1a6; margin-top: 24px;">© 2025 Xjeralabs PTE LTD . All rights reserved.</p>
                 </div>
             </div>
         </footer>
         
-        <!-- Print-specific footer -->
-        <div class="print-footer">
+        <div class="print-footer content-block">
             <p>Contact Us: enquiry@xjeralabs.com</p>
             <p>© 2025 Xjeralabs PTE LTD . All rights reserved.</p>
         </div>
-    </div> <!-- End of #page-content -->
+    </div>
 
-    <!-- JS Script -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Reveal elements on scroll
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.1
+    document.addEventListener('DOMContentLoaded', function() {
+        // --- Standard web page interactions ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
             });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
 
-            document.querySelectorAll('.reveal-up').forEach(el => {
-                observer.observe(el);
-            });
-
-            // Smooth scroll to anchor
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    if(this.getAttribute('href') === '#') {
-                        return;
-                    }
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                });
-            });
-
-            // Print Simulation Logic
-            const simulateBtn = document.getElementById('simulate-print-btn');
-            const exitBtn = document.getElementById('exit-preview-btn-fixed');
-            const printBtn = document.getElementById('print-btn-fixed'); // 新增的打印按钮
-            const body = document.body;
-
-            simulateBtn.addEventListener('click', () => {
-                body.classList.add('print-simulation');
-                exitBtn.style.display = 'block';
-                printBtn.style.display = 'block'; // 显示打印按钮
-            });
-
-            exitBtn.addEventListener('click', () => {
-                body.classList.remove('print-simulation');
-                exitBtn.style.display = 'none';
-                printBtn.style.display = 'none'; // 隐藏打印按钮
-            });
-
-            // 为新的打印按钮添加点击事件
-            printBtn.addEventListener('click', () => {
-                window.print();
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === '#') return;
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
             });
         });
+
+        // --- Print and Preview Logic ---
+        const simulateBtn = document.getElementById('simulate-print-btn');
+        const exitBtn = document.getElementById('exit-preview-btn-fixed');
+        const printBtn = document.getElementById('print-btn-fixed');
+        const previewControls = document.querySelector('.preview-controls');
+        
+        const body = document.body;
+        const pageContent = document.getElementById('page-content');
+        const previewContainer = document.getElementById('print-preview-container');
+
+        const A4_HEIGHT_PX = 1122; // Approximate height of A4 at 96 DPI
+
+        function generatePreviewPages() {
+            previewContainer.innerHTML = ''; // Clear previous preview
+            const contentBlocks = pageContent.querySelectorAll('.content-block');
+            
+            let currentPage = createNewPage();
+            let currentPageContentWrapper = currentPage.querySelector('.print-styles-container');
+
+            contentBlocks.forEach(block => {
+                // If a block is marked to start a new page, and the current page is not empty, finalize the current page and start a new one.
+                if (block.classList.contains('page-break-before') && currentPageContentWrapper.children.length > 0) {
+                    currentPage = createNewPage();
+                    currentPageContentWrapper = currentPage.querySelector('.print-styles-container');
+                }
+                
+                const clonedBlock = block.cloneNode(true);
+                // Remove the page-break class from the clone to avoid layout shifts in the preview
+                clonedBlock.classList.remove('page-break-before');
+                currentPageContentWrapper.appendChild(clonedBlock);
+            });
+        }
+
+        function createNewPage() {
+            const page = document.createElement('div');
+            page.className = 'simulated-page';
+            
+            // Add a wrapper inside the page that will have the print styles applied
+            const contentWrapper = document.createElement('div');
+            contentWrapper.className = 'print-styles-container';
+            page.appendChild(contentWrapper);
+
+            previewContainer.appendChild(page);
+            return page;
+        }
+
+        simulateBtn.addEventListener('click', () => {
+            body.classList.add('print-simulation');
+            pageContent.style.display = 'none';
+            previewContainer.style.display = 'flex';
+            previewControls.style.display = 'block';
+            generatePreviewPages();
+            window.scrollTo(0, 0);
+        });
+
+        exitBtn.addEventListener('click', () => {
+            body.classList.remove('print-simulation');
+            pageContent.style.display = 'block';
+            previewContainer.style.display = 'none';
+            previewControls.style.display = 'none';
+        });
+
+        printBtn.addEventListener('click', () => {
+            window.print();
+        });
+    });
     </script>
 
 </body>
